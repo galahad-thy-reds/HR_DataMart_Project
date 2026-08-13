@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="(local).HR_Sintetico"
-  DTS:DTSID="{DBC52F79-879C-4A35-9111-32A534806B8C}"
+  DTS:DTSID="{0D2B4925-7193-434A-83AE-8C5F26280CF7}"
   DTS:CreationName="OLEDB">
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=(local);Initial Catalog=HR_Sintetico;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{DBC52F79-879C-4A35-9111-32A534806B8C}(local).HR_Sintetico;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=(local);Initial Catalog=HR_Sintetico;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{0D2B4925-7193-434A-83AE-8C5F26280CF7}(local).HR_Sintetico;Auto Translate=False;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
