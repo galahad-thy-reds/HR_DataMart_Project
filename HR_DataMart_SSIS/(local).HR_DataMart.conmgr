@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="(local).HR_DataMart"
+  DTS:DTSID="{BAC57255-E96A-4291-9616-D6B91A128BFB}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(local);Initial Catalog=HR_DataMart;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{BAC57255-E96A-4291-9616-D6B91A128BFB}(local).HR_DataMart;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
