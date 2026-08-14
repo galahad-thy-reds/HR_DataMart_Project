@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="42"
-  DTS:VersionGUID="{04695456-A44E-497D-942D-DE144737B15B}">
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{AF779F3D-1045-4D70-9532-2E9E93E069FE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1781,7 +1781,746 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <pipeline
-              version="1" />
+              version="1">
+              <components>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          name="LoadBatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_GUID)("{" + [TRIM](@[User::GUID]) + "}")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_GUID)("{" + TRIM(@[User::GUID]) + "}")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          name="LoadType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,4,1252)"Full"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,4,1252)"Full"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC_EscalaSalarial"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[EscalaSalarial]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Connections[OleDbConnection]"
+                      connectionManagerID="{0D2B4925-7193-434A-83AE-8C5F26280CF7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Sintetico]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[EscalaSalarialID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[EscalaSalarialID]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[EscalaSalarialID]"
+                          name="EscalaSalarialID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Codigo]"
+                          length="20"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Codigo]"
+                          name="Codigo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Grado]"
+                          dataType="ui1"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Grado]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Grado]"
+                          name="Grado"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                          length="100"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                          name="Descripcion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMinimo]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[SalarioMinimo]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMinimo]"
+                          name="SalarioMinimo"
+                          precision="12"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMedio]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[SalarioMedio]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMedio]"
+                          name="SalarioMedio"
+                          precision="12"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMaximo]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[SalarioMaximo]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMaximo]"
+                          name="SalarioMaximo"
+                          precision="12"
+                          scale="2"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Moneda]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Moneda]"
+                          length="3"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Moneda]"
+                          name="Moneda"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[VigenteDesde]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[VigenteDesde]"
+                          length="10"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[VigenteDesde]"
+                          name="VigenteDesde"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[VigenteHasta]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[VigenteHasta]"
+                          length="10"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[VigenteHasta]"
+                          name="VigenteHasta"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[IsActive]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[IsActive]"
+                          name="IsActive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          name="CreatedAt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          name="ModifiedAt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[EscalaSalarialID]"
+                          dataType="i4"
+                          name="EscalaSalarialID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Grado]"
+                          dataType="ui1"
+                          name="Grado" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                          dataType="wstr"
+                          length="100"
+                          name="Descripcion" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[SalarioMinimo]"
+                          dataType="numeric"
+                          name="SalarioMinimo"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[SalarioMedio]"
+                          dataType="numeric"
+                          name="SalarioMedio"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[SalarioMaximo]"
+                          dataType="numeric"
+                          name="SalarioMaximo"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[Moneda]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="Moneda" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[VigenteDesde]"
+                          dataType="wstr"
+                          length="10"
+                          name="VigenteDesde" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[VigenteHasta]"
+                          dataType="wstr"
+                          length="10"
+                          name="VigenteHasta" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                          dataType="bool"
+                          name="IsActive" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="CreatedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="ModifiedAt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[EscalaSalarialID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[EscalaSalarialID]"
+                          name="EscalaSalarialID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Codigo]"
+                          name="Codigo" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Grado]"
+                          dataType="ui1"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Grado]"
+                          name="Grado" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                          name="Descripcion" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[SalarioMinimo]"
+                          dataType="numeric"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[SalarioMinimo]"
+                          name="SalarioMinimo"
+                          precision="12"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[SalarioMedio]"
+                          dataType="numeric"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[SalarioMedio]"
+                          name="SalarioMedio"
+                          precision="12"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[SalarioMaximo]"
+                          dataType="numeric"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[SalarioMaximo]"
+                          name="SalarioMaximo"
+                          precision="12"
+                          scale="2" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Moneda]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[Moneda]"
+                          name="Moneda" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[VigenteDesde]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[VigenteDesde]"
+                          name="VigenteDesde" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[VigenteHasta]"
+                          dataType="wstr"
+                          length="10"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[VigenteHasta]"
+                          name="VigenteHasta" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                          name="IsActive" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          name="CreatedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          name="ModifiedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_EscalaSalarial"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[EscalaSalarial]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Connections[OleDbConnection]"
+                      connectionManagerID="{11120634-3D9C-4960-9B26-BCBE1C4B8695}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[EscalaSalarialID]"
+                          cachedDataType="i4"
+                          cachedName="EscalaSalarialID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[EscalaSalarialID]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[EscalaSalarialID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[Codigo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="Codigo"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Codigo]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[Grado]"
+                          cachedDataType="ui1"
+                          cachedName="Grado"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Grado]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Grado]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Descripcion"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[SalarioMinimo]"
+                          cachedDataType="numeric"
+                          cachedName="SalarioMinimo"
+                          cachedPrecision="12"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SalarioMinimo]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMinimo]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[SalarioMedio]"
+                          cachedDataType="numeric"
+                          cachedName="SalarioMedio"
+                          cachedPrecision="12"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SalarioMedio]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMedio]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[SalarioMaximo]"
+                          cachedDataType="numeric"
+                          cachedName="SalarioMaximo"
+                          cachedPrecision="12"
+                          cachedScale="2"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SalarioMaximo]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[SalarioMaximo]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[Moneda]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="3"
+                          cachedName="Moneda"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[Moneda]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                          cachedDataType="bool"
+                          cachedName="IsActive"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[IsActive]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[LoadBatchID]"
+                          cachedDataType="guid"
+                          cachedName="LoadBatchID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[LoadType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="LoadType"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output].Columns[LoadType]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].Columns[ModifiedAt]"
+                          cachedDataType="wstr"
+                          cachedLength="19"
+                          cachedName="ModifiedAt"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output].Columns[ModifiedAt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[StagingID]"
+                          dataType="i8"
+                          name="StagingID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[EscalaSalarialID]"
+                          dataType="i4"
+                          name="EscalaSalarialID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Grado]"
+                          dataType="ui1"
+                          name="Grado" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                          dataType="wstr"
+                          length="100"
+                          name="Descripcion" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SalarioMinimo]"
+                          dataType="numeric"
+                          name="SalarioMinimo"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SalarioMedio]"
+                          dataType="numeric"
+                          name="SalarioMedio"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SalarioMaximo]"
+                          dataType="numeric"
+                          name="SalarioMaximo"
+                          precision="12"
+                          scale="2" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[Moneda]"
+                          codePage="1252"
+                          dataType="str"
+                          length="3"
+                          name="Moneda" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                          dataType="bool"
+                          name="IsActive" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="SrcModifiedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          dataType="guid"
+                          name="LoadBatchID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[LoadDateUTC]"
+                          dataType="wstr"
+                          length="19"
+                          name="LoadDateUTC" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="LoadType" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SC_Dimensiones\DFT_EscalaSalarial.Paths[Derived Column Output]"
+                  endId="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SC_Dimensiones\DFT_EscalaSalarial.Paths[OLE DB Source Output]"
+                  endId="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -2410,7 +3149,585 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <pipeline
-              version="1" />
+              version="1">
+              <components>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          name="LoadBatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_GUID)("{" + [TRIM](@[User::GUID]) + "}")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_GUID)("{" + TRIM(@[User::GUID]) + "}")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          name="LoadType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,4,1252)"Full"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,4,1252)"Full"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC_MotivoSalida"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[MotivoSalida]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Connections[OleDbConnection]"
+                      connectionManagerID="{0D2B4925-7193-434A-83AE-8C5F26280CF7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Sintetico]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[MotivoSalidaID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[MotivoSalidaID]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[MotivoSalidaID]"
+                          name="MotivoSalidaID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[Codigo]"
+                          length="20"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Codigo]"
+                          name="Codigo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                          length="100"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Categoria]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[Categoria]"
+                          length="40"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Categoria]"
+                          name="Categoria"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[EsEvitable]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[EsEvitable]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[EsEvitable]"
+                          name="EsEvitable"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[IsActive]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[IsActive]"
+                          name="IsActive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          name="CreatedAt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          name="ModifiedAt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[MotivoSalidaID]"
+                          dataType="i4"
+                          name="MotivoSalidaID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="100"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[Categoria]"
+                          dataType="wstr"
+                          length="40"
+                          name="Categoria" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[EsEvitable]"
+                          dataType="bool"
+                          name="EsEvitable" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                          dataType="bool"
+                          name="IsActive" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="CreatedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="ModifiedAt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[MotivoSalidaID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[MotivoSalidaID]"
+                          name="MotivoSalidaID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[Codigo]"
+                          name="Codigo" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                          name="Nombre" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[Categoria]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[Categoria]"
+                          name="Categoria" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[EsEvitable]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[EsEvitable]"
+                          name="EsEvitable" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                          name="IsActive" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          name="CreatedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          name="ModifiedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_MotivoSalida"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[MotivoSalida]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Connections[OleDbConnection]"
+                      connectionManagerID="{11120634-3D9C-4960-9B26-BCBE1C4B8695}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[MotivoSalidaID]"
+                          cachedDataType="i4"
+                          cachedName="MotivoSalidaID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[MotivoSalidaID]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[MotivoSalidaID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[Codigo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="Codigo"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Codigo]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[Categoria]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="Categoria"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[Categoria]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[Categoria]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[EsEvitable]"
+                          cachedDataType="bool"
+                          cachedName="EsEvitable"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[EsEvitable]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[EsEvitable]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                          cachedDataType="bool"
+                          cachedName="IsActive"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[IsActive]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[LoadBatchID]"
+                          cachedDataType="guid"
+                          cachedName="LoadBatchID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[LoadType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="LoadType"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output].Columns[LoadType]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].Columns[ModifiedAt]"
+                          cachedDataType="wstr"
+                          cachedLength="19"
+                          cachedName="ModifiedAt"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output].Columns[ModifiedAt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[StagingID]"
+                          dataType="i8"
+                          name="StagingID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[MotivoSalidaID]"
+                          dataType="i4"
+                          name="MotivoSalidaID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="100"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[Categoria]"
+                          dataType="wstr"
+                          length="40"
+                          name="Categoria" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[EsEvitable]"
+                          dataType="bool"
+                          name="EsEvitable" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                          dataType="bool"
+                          name="IsActive" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="SrcModifiedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          dataType="guid"
+                          name="LoadBatchID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[LoadDateUTC]"
+                          dataType="wstr"
+                          length="19"
+                          name="LoadDateUTC" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="LoadType" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SC_Dimensiones\DFT_MotivoSalida.Paths[Derived Column Output]"
+                  endId="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SC_Dimensiones\DFT_MotivoSalida.Paths[OLE DB Source Output]"
+                  endId="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3568,7 +4885,537 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <pipeline
-              version="1" />
+              version="1">
+              <components>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          name="LoadBatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_GUID)("{" + [TRIM](@[User::GUID]) + "}")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_GUID)("{" + TRIM(@[User::GUID]) + "}")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          name="LoadType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,4,1252)"Full"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,4,1252)"Full"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC_PuestoHabilidadRequerida"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[PuestoHabilidadRequerida]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Connections[OleDbConnection]"
+                      connectionManagerID="{0D2B4925-7193-434A-83AE-8C5F26280CF7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Sintetico]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[PuestoHabilidadID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[PuestoHabilidadID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[PuestoHabilidadID]"
+                          name="PuestoHabilidadID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[PuestoID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[PuestoID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[PuestoID]"
+                          name="PuestoID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[HabilidadID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[HabilidadID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[HabilidadID]"
+                          name="HabilidadID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[NivelMinimoRequeridoID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[NivelMinimoRequeridoID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[NivelMinimoRequeridoID]"
+                          name="NivelMinimoRequeridoID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[EsObligatoria]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[EsObligatoria]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[EsObligatoria]"
+                          name="EsObligatoria"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          name="CreatedAt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          name="ModifiedAt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[PuestoHabilidadID]"
+                          dataType="i4"
+                          name="PuestoHabilidadID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[PuestoID]"
+                          dataType="i4"
+                          name="PuestoID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[HabilidadID]"
+                          dataType="i4"
+                          name="HabilidadID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[NivelMinimoRequeridoID]"
+                          dataType="i4"
+                          name="NivelMinimoRequeridoID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[EsObligatoria]"
+                          dataType="bool"
+                          name="EsObligatoria" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="CreatedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="ModifiedAt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[PuestoHabilidadID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[PuestoHabilidadID]"
+                          name="PuestoHabilidadID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[PuestoID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[PuestoID]"
+                          name="PuestoID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[HabilidadID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[HabilidadID]"
+                          name="HabilidadID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[NivelMinimoRequeridoID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[NivelMinimoRequeridoID]"
+                          name="NivelMinimoRequeridoID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[EsObligatoria]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[EsObligatoria]"
+                          name="EsObligatoria" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          name="CreatedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          name="ModifiedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="STG_PuestoHabilidadRequerida"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[PuestoHabilidadRequerida]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Connections[OleDbConnection]"
+                      connectionManagerID="{11120634-3D9C-4960-9B26-BCBE1C4B8695}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[PuestoHabilidadID]"
+                          cachedDataType="i4"
+                          cachedName="PuestoHabilidadID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[PuestoHabilidadID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[PuestoHabilidadID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[PuestoID]"
+                          cachedDataType="i4"
+                          cachedName="PuestoID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[PuestoID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[PuestoID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[HabilidadID]"
+                          cachedDataType="i4"
+                          cachedName="HabilidadID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[HabilidadID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[HabilidadID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[NivelMinimoRequeridoID]"
+                          cachedDataType="i4"
+                          cachedName="NivelMinimoRequeridoID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[NivelMinimoRequeridoID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[NivelMinimoRequeridoID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[EsObligatoria]"
+                          cachedDataType="bool"
+                          cachedName="EsObligatoria"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[EsObligatoria]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[EsObligatoria]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[LoadBatchID]"
+                          cachedDataType="guid"
+                          cachedName="LoadBatchID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[LoadType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="LoadType"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output].Columns[LoadType]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].Columns[ModifiedAt]"
+                          cachedDataType="wstr"
+                          cachedLength="19"
+                          cachedName="ModifiedAt"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output].Columns[ModifiedAt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[StagingID]"
+                          dataType="i8"
+                          name="StagingID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[PuestoHabilidadID]"
+                          dataType="i4"
+                          name="PuestoHabilidadID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[PuestoID]"
+                          dataType="i4"
+                          name="PuestoID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[HabilidadID]"
+                          dataType="i4"
+                          name="HabilidadID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[NivelMinimoRequeridoID]"
+                          dataType="i4"
+                          name="NivelMinimoRequeridoID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[EsObligatoria]"
+                          dataType="bool"
+                          name="EsObligatoria" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="SrcModifiedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          dataType="guid"
+                          name="LoadBatchID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[LoadDateUTC]"
+                          dataType="wstr"
+                          length="19"
+                          name="LoadDateUTC" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="LoadType" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida.Paths[Derived Column Output]"
+                  endId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida.Paths[OLE DB Source Output]"
+                  endId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -3583,7 +5430,598 @@
           <DTS:Variables />
           <DTS:ObjectData>
             <pipeline
-              version="1" />
+              version="1">
+              <components>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]"
+                          name="LoadBatchID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_GUID)("{" + [TRIM](@[User::GUID]) + "}")</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_GUID)("{" + TRIM(@[User::GUID]) + "}")</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output].Columns[LoadType]"
+                          name="LoadType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_STR,4,1252)"Full"</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_STR,4,1252)"Full"</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[stg].[TipoAusencia]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{11120634-3D9C-4960-9B26-BCBE1C4B8695}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TipoAusenciaID]"
+                          cachedDataType="i4"
+                          cachedName="TipoAusenciaID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TipoAusenciaID]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[TipoAusenciaID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Codigo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="Codigo"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[Codigo]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                          cachedDataType="wstr"
+                          cachedLength="80"
+                          cachedName="Nombre"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EsRemunerada]"
+                          cachedDataType="bool"
+                          cachedName="EsRemunerada"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EsRemunerada]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[EsRemunerada]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AfectaProductividad]"
+                          cachedDataType="bool"
+                          cachedName="AfectaProductividad"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AfectaProductividad]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[AfectaProductividad]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsActive]"
+                          cachedDataType="bool"
+                          cachedName="IsActive"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[IsActive]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LoadBatchID]"
+                          cachedDataType="guid"
+                          cachedName="LoadBatchID"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output].Columns[LoadBatchID]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LoadType]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="4"
+                          cachedName="LoadType"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output].Columns[LoadType]" />
+                        <inputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ModifiedAt]"
+                          cachedDataType="wstr"
+                          cachedLength="19"
+                          cachedName="ModifiedAt"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[ModifiedAt]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StagingID]"
+                          dataType="i8"
+                          name="StagingID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TipoAusenciaID]"
+                          dataType="i4"
+                          name="TipoAusenciaID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="80"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EsRemunerada]"
+                          dataType="bool"
+                          name="EsRemunerada" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AfectaProductividad]"
+                          dataType="bool"
+                          name="AfectaProductividad" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IsActive]"
+                          dataType="bool"
+                          name="IsActive" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SrcModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="SrcModifiedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadBatchID]"
+                          dataType="guid"
+                          name="LoadBatchID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadDateUTC]"
+                          dataType="wstr"
+                          length="19"
+                          name="LoadDateUTC" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadType]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="LoadType" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="SRC_TipoAusencia"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[hr].[TipoAusencia]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Connections[OleDbConnection]"
+                      connectionManagerID="{0D2B4925-7193-434A-83AE-8C5F26280CF7}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[(local).HR_Sintetico]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[TipoAusenciaID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[TipoAusenciaID]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[TipoAusenciaID]"
+                          name="TipoAusenciaID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[Codigo]"
+                          length="20"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[Codigo]"
+                          name="Codigo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[Nombre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                          length="80"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[Nombre]"
+                          name="Nombre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[EsRemunerada]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[EsRemunerada]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[EsRemunerada]"
+                          name="EsRemunerada"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[AfectaProductividad]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[AfectaProductividad]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[AfectaProductividad]"
+                          name="AfectaProductividad"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[RequiereAprobacion]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[RequiereAprobacion]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[RequiereAprobacion]"
+                          name="RequiereAprobacion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[IsActive]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[IsActive]"
+                          name="IsActive"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[CreatedAt]"
+                          name="CreatedAt"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].Columns[ModifiedAt]"
+                          name="ModifiedAt"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[TipoAusenciaID]"
+                          dataType="i4"
+                          name="TipoAusenciaID" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Codigo" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                          dataType="wstr"
+                          length="80"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[EsRemunerada]"
+                          dataType="bool"
+                          name="EsRemunerada" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[AfectaProductividad]"
+                          dataType="bool"
+                          name="AfectaProductividad" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[RequiereAprobacion]"
+                          dataType="bool"
+                          name="RequiereAprobacion" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[IsActive]"
+                          dataType="bool"
+                          name="IsActive" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="CreatedAt" />
+                        <externalMetadataColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output].ExternalColumns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          name="ModifiedAt" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[TipoAusenciaID]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[TipoAusenciaID]"
+                          name="TipoAusenciaID" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[Codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[Codigo]"
+                          name="Codigo" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                          dataType="wstr"
+                          length="80"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                          name="Nombre" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[EsRemunerada]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[EsRemunerada]"
+                          name="EsRemunerada" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[AfectaProductividad]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[AfectaProductividad]"
+                          name="AfectaProductividad" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[RequiereAprobacion]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[RequiereAprobacion]"
+                          name="RequiereAprobacion" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                          dataType="bool"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[IsActive]"
+                          name="IsActive" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[CreatedAt]"
+                          name="CreatedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          dataType="wstr"
+                          length="19"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[ModifiedAt]"
+                          name="ModifiedAt" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\SC_Dimensiones\DFT_TipoAusencia.Paths[Derived Column Output]"
+                  endId="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\SC_Dimensiones\DFT_TipoAusencia.Paths[OLE DB Source Output]"
+                  endId="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -4344,7 +6782,7 @@
     design-time-name="Package\SC_Dimensiones\DFT_Departamento">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="171,42"
           Id="Package\SC_Dimensiones\DFT_Departamento\STG_Departamento"
@@ -4398,9 +6836,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,18.25,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4497,6 +6933,82 @@
     </LayoutInfo>
   </TaskHost>
   <TaskHost
+    design-time-name="Package\SC_Dimensiones\DFT_EscalaSalarial">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SC_Dimensiones\DFT_EscalaSalarial\Derived Column"
+          TopLeft="14,107.5" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial"
+          TopLeft="16,5.5" />
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_EscalaSalarial.Paths[OLE DB Source Output]"
+          TopLeft="99.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8.49999999999999,60"
+              Start="0,0"
+              End="-8.49999999999999,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-4.49999999999999,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.49999999999999,30"
+                    Point2="-8.49999999999999,30"
+                    Point3="-8.49999999999999,34" />
+                  <mssgle:LineSegment
+                    End="-8.49999999999999,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_EscalaSalarial.Paths[Derived Column Output]"
+          TopLeft="90,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
     design-time-name="Package\SC_Dimensiones\DFT_Habilidad">
     <LayoutInfo>
       <GraphLayout
@@ -4538,6 +7050,70 @@
         <EdgeLayout
           Id="Package\SC_Dimensiones\DFT_Habilidad.Paths[OLE DB Source Output]"
           TopLeft="91,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\SC_Dimensiones\DFT_MotivoSalida">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SC_Dimensiones\DFT_MotivoSalida\Derived Column"
+          TopLeft="10,107.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida"
+          TopLeft="5.50000000000001,5.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_MotivoSalida.Paths[OLE DB Source Output]"
+          TopLeft="87,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_MotivoSalida.Paths[Derived Column Output]"
+          TopLeft="87,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4666,6 +7242,134 @@
         <EdgeLayout
           Id="Package\SC_Dimensiones\DFT_Puesto.Paths[Derived Column Output]"
           TopLeft="82.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\Derived Column"
+          TopLeft="42,107.5" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida"
+          TopLeft="6.00000000000001,5.5" />
+        <NodeLayout
+          Size="227,42"
+          Id="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida.Paths[OLE DB Source Output]"
+          TopLeft="119,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida.Paths[Derived Column Output]"
+          TopLeft="119,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\SC_Dimensiones\DFT_TipoAusencia">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\SC_Dimensiones\DFT_TipoAusencia\Derived Column"
+          TopLeft="14,107.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia"
+          TopLeft="16,5.5" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination"
+          TopLeft="5.50000000000003,209.5" />
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_TipoAusencia.Paths[OLE DB Source Output]"
+          TopLeft="95,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\SC_Dimensiones\DFT_TipoAusencia.Paths[Derived Column Output]"
+          TopLeft="91,149.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4871,6 +7575,110 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\SC_Dimensiones\DFT_NivelHabilidad\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_TipoAusencia\SRC_TipoAusencia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_TipoAusencia\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_MotivoSalida\SRC_MotivoSalida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_MotivoSalida\STG_MotivoSalida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_EscalaSalarial\SRC_EscalaSalarial">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_EscalaSalarial\STG_EscalaSalarial">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\SRC_PuestoHabilidadRequerida">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SC_Dimensiones\DFT_PuestoHabilidadRequerida\STG_PuestoHabilidadRequerida">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
