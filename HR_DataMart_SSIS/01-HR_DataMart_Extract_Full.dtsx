@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package2"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{300A513A-89F0-455C-8C4F-20A6DC8F7DCC}">
+  DTS:VersionBuild="69"
+  DTS:VersionGUID="{6255CB36-0E9C-43BA-ABD3-F345B9315273}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -41,6 +41,7 @@
     <DTS:Executable
       DTS:refId="Package\EST_Limpiar_Stage"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{7A954866-AACE-443B-9FEF-5CFF5366078C}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
@@ -58,6 +59,7 @@
     <DTS:Executable
       DTS:refId="Package\EST_ObtenerGUID"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DelayValidation="True"
       DTS:Description="Execute SQL Task"
       DTS:DTSID="{43E1491A-20E8-4445-BFFE-02183F1C8CDF}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
@@ -6660,6 +6662,7 @@
         <DTS:Executable
           DTS:refId="Package\SC_Historicos\DFT_Ausencia"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{8996637B-6044-459E-A1DA-97F14B470334}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -7351,6 +7354,7 @@
         <DTS:Executable
           DTS:refId="Package\SC_Historicos\DFT_EmpleadoAsignacionHistorial"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{0C88347B-9C63-454F-B301-2DF262DB389C}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -8117,6 +8121,7 @@
         <DTS:Executable
           DTS:refId="Package\SC_Historicos\DFT_EmpleadoHabilidad"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{F09E7960-DFEA-49FA-A50B-F34C25002DEF}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -8756,6 +8761,7 @@
         <DTS:Executable
           DTS:refId="Package\SC_Historicos\DFT_HistorialSalarial"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{7041EDB0-5845-4AB2-8A94-604909D80F60}"
           DTS:ExecutableType="Microsoft.Pipeline"
@@ -9429,6 +9435,7 @@
         <DTS:Executable
           DTS:refId="Package\SC_Historicos\DFT_SalidaEmpleado"
           DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
           DTS:Description="Data Flow Task"
           DTS:DTSID="{5DD64808-C35C-4B72-B565-DC7F17504818}"
           DTS:ExecutableType="Microsoft.Pipeline"
