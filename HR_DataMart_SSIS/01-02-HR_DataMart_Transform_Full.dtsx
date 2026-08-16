@@ -6,14 +6,14 @@
   DTS:CreatorComputerName="DESKTOP-0MA1MK3"
   DTS:CreatorName="DESKTOP-0MA1MK3\Practicante"
   DTS:DelayValidation="True"
-  DTS:DTSID="{C469ADC1-C691-4C65-8E1A-FD6ACD3803A7}"
+  DTS:DTSID="{42DF14AA-4B7A-489A-9D2D-30D7A3D75077}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="17.0.1016.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="01-HR_DataMart_Transform_Full"
+  DTS:ObjectName="01-02-HR_DataMart_Transform_Full"
   DTS:PackageType="5"
-  DTS:VersionBuild="90"
-  DTS:VersionGUID="{7B8D8A29-AAB7-457E-AA12-BEBAA069D8D8}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{E33DA078-872D-4F66-A003-152980A51D05}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -3528,7 +3528,7 @@
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{11120634-3D9C-4960-9B26-BCBE1C4B8695}"
-              SQLTask:SqlStatementSource="INSERT INTO HR_DataMart.dm.FactHabilidadEmpleado&#xA;    (FechaEvaluacionKey, EmpleadoKey, DepartamentoKey, PuestoKey, HabilidadKey,&#xA;     NivelActual, NivelRequerido, TieneGap, DiferenciaNiveles, EsCritica, EsObligatoria)&#xA;    SELECT&#xA;        CONVERT(INT, CONVERT(CHAR(8), ISNULL(eh.FechaEvaluacion, CAST(GETDATE() AS DATE)), 112)),&#xA;        de.EmpleadoKey, dd.DepartamentoKey, dp.PuestoKey, dh.HabilidadKey,&#xA;        nact.ValorNumerico,&#xA;        nreq.ValorNumerico,&#xA;        CASE WHEN ISNULL(nact.ValorNumerico, 0) &gt;= nreq.ValorNumerico THEN 0 ELSE 1 END,&#xA;        nreq.ValorNumerico - ISNULL(nact.ValorNumerico, 0),&#xA;        dh.IsCritical,&#xA;        ph.EsObligatoria&#xA;    FROM stg.Empleado e&#xA;    INNER JOIN stg.PuestoHabilidadRequerida ph ON ph.PuestoID = e.PuestoID AND ph.LoadBatchID = e.LoadBatchID&#xA;    INNER JOIN stg.NivelHabilidad nreq ON nreq.NivelHabilidadID = ph.NivelMinimoRequeridoID AND nreq.LoadBatchID = e.LoadBatchID&#xA;    LEFT JOIN stg.EmpleadoHabilidad eh&#xA;        ON eh.EmpleadoID = e.EmpleadoID AND eh.HabilidadID = ph.HabilidadID&#xA;       AND eh.LoadBatchID = e.LoadBatchID AND eh.IsActive = 1&#xA;    LEFT JOIN stg.NivelHabilidad nact ON nact.NivelHabilidadID = eh.NivelHabilidadID AND nact.LoadBatchID = e.LoadBatchID&#xA;    INNER JOIN HR_DataMart.dm.DimEmpleado de ON de.EmpleadoBK = e.EmpleadoID AND de.EsActual = 1&#xA;    INNER JOIN HR_DataMart.dm.DimDepartamento dd ON dd.DepartamentoBK = e.DepartamentoID&#xA;    INNER JOIN HR_DataMart.dm.DimPuesto dp ON dp.PuestoBK = e.PuestoID&#xA;    INNER JOIN HR_DataMart.dm.DimHabilidad dh ON dh.HabilidadBK = ph.HabilidadID&#xA;    WHERE e.LoadBatchID = ? AND e.IsActive = 1;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              SQLTask:SqlStatementSource="INSERT INTO HR_DataMart.dm.FactHabilidadEmpleado&#xA;    (FechaEvaluacionKey, EmpleadoKey, DepartamentoKey, PuestoKey, HabilidadKey,&#xA;     NivelActual, NivelRequerido, TieneGap, DiferenciaNiveles, EsCritica, EsObligatoria)&#xA;    SELECT&#xA;        CONVERT(INT, CONVERT(CHAR(8), ISNULL(eh.FechaEvaluacion, CAST(GETDATE() AS DATE)), 112)),&#xA;        de.EmpleadoKey, dd.DepartamentoKey, dp.PuestoKey, dh.HabilidadKey,&#xA;        nact.ValorNumerico,&#xA;        nreq.ValorNumerico,&#xA;        CASE WHEN ISNULL(nact.ValorNumerico, 0) &gt;= nreq.ValorNumerico THEN 0 ELSE 1 END,&#xA;        CAST(nreq.ValorNumerico AS INT)- CAST(ISNULL(nact.ValorNumerico, 0) AS INT),&#xA;        dh.IsCritical,&#xA;        ph.EsObligatoria&#xA;    FROM stg.Empleado e&#xA;    INNER JOIN stg.PuestoHabilidadRequerida ph ON ph.PuestoID = e.PuestoID AND ph.LoadBatchID = e.LoadBatchID&#xA;    INNER JOIN stg.NivelHabilidad nreq ON nreq.NivelHabilidadID = ph.NivelMinimoRequeridoID AND nreq.LoadBatchID = e.LoadBatchID&#xA;    LEFT JOIN stg.EmpleadoHabilidad eh&#xA;        ON eh.EmpleadoID = e.EmpleadoID AND eh.HabilidadID = ph.HabilidadID&#xA;       AND eh.LoadBatchID = e.LoadBatchID AND eh.IsActive = 1&#xA;    LEFT JOIN stg.NivelHabilidad nact ON nact.NivelHabilidadID = eh.NivelHabilidadID AND nact.LoadBatchID = e.LoadBatchID&#xA;    INNER JOIN HR_DataMart.dm.DimEmpleado de ON de.EmpleadoBK = e.EmpleadoID AND de.EsActual = 1&#xA;    INNER JOIN HR_DataMart.dm.DimDepartamento dd ON dd.DepartamentoBK = e.DepartamentoID&#xA;    INNER JOIN HR_DataMart.dm.DimPuesto dp ON dp.PuestoBK = e.PuestoID&#xA;    INNER JOIN HR_DataMart.dm.DimHabilidad dh ON dh.HabilidadBK = ph.HabilidadID&#xA;    WHERE e.LoadBatchID = ? AND e.IsActive = 1;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
               <SQLTask:ParameterBinding
                 SQLTask:ParameterName="0"
                 SQLTask:DtsVariableName="$Package::pBatchID"
@@ -3548,7 +3548,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_FactHeadcountMensual"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3573,7 +3573,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="EST_FactRotacion"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3667,19 +3667,19 @@
         <NodeLayout
           Size="177,42"
           Id="Package\SC_Facts_Full_Transform\EST_FactAusentismo"
-          TopLeft="228.548767967146,18" />
+          TopLeft="228.548767967146,16.25" />
         <NodeLayout
           Size="212,42"
           Id="Package\SC_Facts_Full_Transform\EST_FactHabilidadEmpleado"
-          TopLeft="441.179040196883,18" />
+          TopLeft="436.179040196883,16.25" />
         <NodeLayout
           Size="212,42"
           Id="Package\SC_Facts_Full_Transform\EST_FactHeadcountMensual"
-          TopLeft="677.302533000357,18" />
+          TopLeft="677.302533000357,16.25" />
         <NodeLayout
           Size="163,42"
           Id="Package\SC_Facts_Full_Transform\EST_FactRotacion"
-          TopLeft="26.5,18" />
+          TopLeft="26.5,16.25" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"

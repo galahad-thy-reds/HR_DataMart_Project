@@ -26,12 +26,13 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-0MA1MK3</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu7PnFYHwHkiiXTReIRFYywAAAAACAAAAAAAQZgAAAAEAACAAAABnIGkz1k+5WW0wHv1yxWQFVstJG9MM5M1DH6EJOxdHyAAAAAAOgAAAAAIAACAAAAAR2m7I2wtEYWx8AhNmwKJDiAPp51WZoTkIC3TU/FGevJAAAABfFE6oEkHnfyjbHyPCNVbjOQuSoxyp5MfCi4lkVq0M2zwbnlOUl730km2aiqRQuvIJnVNnMIN/WTmj1WGttCNVKG/bFrdrDD4iiIs1NkigR2PUfZ7iOYO3Fgw3ELVok6MYN8KitPbwXRiGeRaq1TyY6pqT/MvkOk2NgyB5ooVOuIFt/bBKBHweUYPZdC/cNIdAAAAAh6dMwOyeiQKiZxodO7Qwi2zU1Cth2vYa1zstReTkb7S5oEXImAALhIysvwesqrwY/gqPkFVf7rWJzrXGcj9Mzg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu7PnFYHwHkiiXTReIRFYywAAAAACAAAAAAAQZgAAAAEAACAAAABx4VJ8vxhujCI3sVO8azaTp3oT06pNaO8NNqt0twhi8QAAAAAOgAAAAAIAACAAAACxb8fqlyrJvX1Qj1zq6gr+kOsLks6vriLEM6e3iTOchZAAAAAr6DLiKIpTdO0C9sfSV1wxv+O1NwhPvOSCvyesLxf7tVQix1fR3K/Sk3815aKvQd0eRU2Ulu54UNslg091mK9WbBqf59gXX9vimTtGdmq4Vu0+iI1snFjQa5sSWmsC/ZaqPe9FStiVaENoUllq8J52gu/5qQiWX7XWQZJdxh8M+Erg4hFVZRb2NnnK5OowYhRAAAAAhKlKSjXeAUjM+HJG1E+3+TrzZHhwSHhRJWq55TRGTuL6sZZO/UHG0Hax3MGFsxpXunpZ6cLE/NXXtftnU7E4zA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="01-HR_DataMart_Extract_Full.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="01-HR_DataMart_Transform_Full.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="01-HR_DataMart_FullLoad.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="01-01-HR_DataMart_Extract_Full.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="01-02-HR_DataMart_Transform_Full.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="(local).HR_Sintetico.conmgr" />
@@ -66,7 +67,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=(local);Initial Catalog=HR_Sintetico;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{0D2B4925-7193-434A-83AE-8C5F26280CF7}(local).HR_Sintetico;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=(local);Initial Catalog=HR_Sintetico;Provider=SQLOLEDB.1;Integrated Security=SSPI;Connect Timeout=0;Auto Translate=False;Application Name=SSIS-HR_DataMart_SSIS-{0D2B4925-7193-434A-83AE-8C5F26280CF7}(local).HR_Sintetico;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -214,7 +215,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=(local);Initial Catalog=HR_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{11120634-3D9C-4960-9B26-BCBE1C4B8695}(local).HR_Staging;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=(local);Initial Catalog=HR_Staging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Connect Timeout=0;Auto Translate=False;Application Name=SSIS-HR_DataMart_SSIS-{11120634-3D9C-4960-9B26-BCBE1C4B8695}(local).HR_Staging;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -362,7 +363,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=(local);Initial Catalog=HR_DataMart;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{BAC57255-E96A-4291-9616-D6B91A128BFB}(local).HR_DataMart;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=(local);Initial Catalog=HR_DataMart;Provider=SQLOLEDB.1;Integrated Security=SSPI;Connect Timeout=0;Auto Translate=False;Application Name=SSIS-HR_DataMart_SSIS-{BAC57255-E96A-4291-9616-D6B91A128BFB}(local).HR_DataMart;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -486,16 +487,16 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="01-HR_DataMart_Extract_Full.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="01-HR_DataMart_FullLoad.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{E4BAAA0C-1DDD-4A82-B661-3803550F10D5}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package2</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{08BA126F-761E-430C-AF97-D2D30EDDE7F7}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">01-HR_DataMart_FullLoad</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">69</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">5</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6255CB36-0E9C-43BA-ABD3-F345B9315273}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{C12AE299-6C19-4243-A759-8825DC2D0EBB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -503,16 +504,48 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="01-HR_DataMart_Transform_Full.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="01-01-HR_DataMart_Extract_Full.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{C469ADC1-C691-4C65-8E1A-FD6ACD3803A7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">01-HR_DataMart_Transform_Full</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{61CE2CAB-46CE-4968-A141-A6025E61BA5B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">01-01-HR_DataMart_Extract_Full</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">59</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">78</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2276BCDE-CA80-4D1D-AD9A-757C10C3D030}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{0BDE16FE-CAA5-46C3-9EDA-57D053045EDB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="pBatchID">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{BC6B4F88-6F18-4698-B510-C378A89320FE}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">2DBF7290-B8D7-4E63-AE0C-EEC11C86ACCA</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="01-02-HR_DataMart_Transform_Full.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{42DF14AA-4B7A-489A-9D2D-30D7A3D75077}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">01-02-HR_DataMart_Transform_Full</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">94</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{E33DA078-872D-4F66-A003-152980A51D05}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
