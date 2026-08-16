@@ -7,6 +7,6 @@
     <DTS:ConnectionManager
       DTS:ConnectRetryCount="1"
       DTS:ConnectRetryInterval="5"
-      DTS:ConnectionString="Data Source=(local);Initial Catalog=HR_DataMart;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-HR_DataMart_SSIS-{BAC57255-E96A-4291-9616-D6B91A128BFB}(local).HR_DataMart;Auto Translate=False;" />
+      DTS:ConnectionString="Data Source=(local);Initial Catalog=HR_DataMart;Provider=SQLOLEDB.1;Integrated Security=SSPI;Connect Timeout=0;Auto Translate=False;Application Name=SSIS-HR_DataMart_SSIS-{BAC57255-E96A-4291-9616-D6B91A128BFB}(local).HR_DataMart;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>
