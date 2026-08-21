@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="01-HR_DataMart_FullLoad"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{C12AE299-6C19-4243-A759-8825DC2D0EBB}">
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{DD593289-9C28-4F56-9241-C825C6C83E27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -42,7 +42,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>01-HR_DataMart_Extract_Full.dtsx</PackageName>
+          <PackageName>01-01-HR_DataMart_Extract_Full.dtsx</PackageName>
           <ParameterAssignment>
             <ParameterName>pBatchID</ParameterName>
             <BindedVariableOrParameterName>User::GUID</BindedVariableOrParameterName>
@@ -63,7 +63,7 @@
       <DTS:ObjectData>
         <ExecutePackageTask>
           <UseProjectReference>True</UseProjectReference>
-          <PackageName>01-HR_DataMart_Transform_Full.dtsx</PackageName>
+          <PackageName>01-02-HR_DataMart_Transform_Full.dtsx</PackageName>
           <ParameterAssignment>
             <ParameterName>pBatchID</ParameterName>
             <BindedVariableOrParameterName>User::GUID</BindedVariableOrParameterName>
@@ -126,10 +126,6 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="166,42"
-          Id="Package\EST_ObtenerGUID"
-          TopLeft="205,63.5" />
-        <NodeLayout
           Size="158,42"
           Id="Package\EPT_Extract_Full"
           TopLeft="209,165.5" />
@@ -137,6 +133,10 @@
           Size="173,42"
           Id="Package\EPT_Transform_Full"
           TopLeft="201.5,267.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\EST_ObtenerGUID"
+          TopLeft="205,63.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="288,105.5">
