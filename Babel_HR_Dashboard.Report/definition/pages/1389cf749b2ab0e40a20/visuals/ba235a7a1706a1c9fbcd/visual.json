@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "ba235a7a1706a1c9fbcd",
+  "position": {
+    "x": 392.95711060948054,
+    "y": 0,
+    "z": 2000,
+    "height": 112.686230248307,
+    "width": 196.47855530474041
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "22 - % gaps críticos"
+                }
+              },
+              "queryRef": "_Medidas.22 - % gaps críticos",
+              "nativeQueryRef": "% gaps críticos",
+              "displayName": "% gaps críticos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "22 - % gaps críticos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "26ad17df51d1c81a5b6b"
+}

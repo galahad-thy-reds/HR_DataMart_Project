@@ -1,0 +1,79 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d41f29434c4d803dda56",
+  "position": {
+    "x": 314.939051918736,
+    "y": 495.55981941309255,
+    "z": 5000,
+    "height": 308,
+    "width": 647,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHabilidad"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimHabilidad.Nombre",
+              "nativeQueryRef": "Habilidad",
+              "active": true,
+              "displayName": "Habilidad"
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "25 - Nivel requerido promedio"
+                }
+              },
+              "queryRef": "_Medidas.25 - Nivel requerido promedio",
+              "nativeQueryRef": "Nivel requerido promedio",
+              "active": true,
+              "displayName": "Nivel requerido promedio"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "24 - Nivel actual promedio"
+                }
+              },
+              "queryRef": "_Medidas.24 - Nivel actual promedio",
+              "nativeQueryRef": "Nivel actual promedio",
+              "displayName": "Nivel actual promedio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

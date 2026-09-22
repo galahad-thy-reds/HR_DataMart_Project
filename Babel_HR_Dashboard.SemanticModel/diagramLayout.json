@@ -1,0 +1,208 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 334.28538054319915,
+            "y": 174.13538449677105
+          },
+          "nodeIndex": "FactAusentismo",
+          "nodeLineageTag": "3a7c9050-6fdc-44b7-a024-4a2161b5901f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 334.25582772023665,
+            "y": 707.0260282339284
+          },
+          "nodeIndex": "FactHabilidadEmpleado",
+          "nodeLineageTag": "1cb581b0-2f94-4ad3-96b0-3ce2f388a9cf",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1187.5667179656007,
+            "y": 738.50337189363188
+          },
+          "nodeIndex": "FactHeadcountMensual",
+          "nodeLineageTag": "3223b199-7fea-4deb-85c4-13e686eb1d86",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1226.0605764019519,
+            "y": 388.289546765262
+          },
+          "nodeIndex": "FactRotacion",
+          "nodeLineageTag": "77cbdf35-893c-477f-8804-a8f4a5f5b90e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1030.3349948510725,
+            "y": 0
+          },
+          "nodeIndex": "HR_DataMart_Src",
+          "nodeLineageTag": "05824e53-06e8-4a58-ac1b-406610acca32",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 902.46688294643479,
+            "y": 270.2907740995538
+          },
+          "nodeIndex": "DimDepartamento",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 704.71358073473493,
+            "y": 815.62513010184739
+          },
+          "nodeIndex": "DimEmpleado",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1423.4854521182697,
+            "y": 1088.7461357188249
+          },
+          "nodeIndex": "DimEscalaSalarial",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 618.398237717809,
+            "y": 465.49343749100763
+          },
+          "nodeIndex": "DimFecha",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 936.69625272728433
+          },
+          "nodeIndex": "DimHabilidad",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1510.2740778510724,
+            "y": 144.18502020097185
+          },
+          "nodeIndex": "DimMotivoSalida",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 903.42378442880249,
+            "y": 541.536429485619
+          },
+          "nodeIndex": "DimPuesto",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 50.078603398899304,
+            "y": -50
+          },
+          "nodeIndex": "DimTipoAusencia",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1510.2526009341377,
+            "y": 614.24263256482232
+          },
+          "nodeIndex": "DimUbicacion",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 1786.7915418510725,
+            "y": 514.39872585941248
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "45b3434d-6ba0-4cc5-8b1c-6e12bafcf36b",
+          "size": {
+            "height": 539.80400600000019,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 56.447393005377734,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": true,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

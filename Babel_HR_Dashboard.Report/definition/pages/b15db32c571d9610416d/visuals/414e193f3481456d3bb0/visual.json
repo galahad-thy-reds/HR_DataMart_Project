@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "414e193f3481456d3bb0",
+  "position": {
+    "x": 554.762979683973,
+    "y": 671.783295711061,
+    "z": 3002,
+    "height": 293.273137697517,
+    "width": 405.95936794582394,
+    "tabOrder": 3002
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimTipoAusencia"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimTipoAusencia.Nombre",
+              "nativeQueryRef": "Tipo Ausencia",
+              "active": true,
+              "displayName": "Tipo Ausencia"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimTipoAusencia"
+                    }
+                  },
+                  "Property": "ImpactoProdDesc"
+                }
+              },
+              "queryRef": "DimTipoAusencia.ImpactoProdDesc",
+              "nativeQueryRef": "ImpactoProdDesc"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "13 - Días ausencia"
+                }
+              },
+              "queryRef": "_Medidas.13 - Días ausencia",
+              "nativeQueryRef": "Días ausencia",
+              "displayName": "Días ausencia"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "13 - Días ausencia"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

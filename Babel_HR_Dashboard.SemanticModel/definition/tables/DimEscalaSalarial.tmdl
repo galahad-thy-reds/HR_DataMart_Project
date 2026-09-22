@@ -1,0 +1,107 @@
+table DimEscalaSalarial
+	lineageTag: c4a249cd-6b05-4cfe-8894-cb4d9bfe0986
+
+	column EscalaSalarialKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f5eb6f25-ca8c-4939-b187-a2265e88f863
+		summarizeBy: none
+		sourceColumn: EscalaSalarialKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EscalaSalarialBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ef35beb8-70ff-4184-9f49-258102c2c6a2
+		summarizeBy: none
+		sourceColumn: EscalaSalarialBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: 724c4b99-d551-4f4e-b5cb-2b8d7967b796
+		summarizeBy: none
+		sourceColumn: Codigo
+		sortByColumn: Grado
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grado
+		dataType: int64
+		formatString: 0
+		lineageTag: aa8b2cd3-00d0-4f4e-91e6-0ba5d59d032a
+		summarizeBy: none
+		sourceColumn: Grado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descripcion
+		dataType: string
+		lineageTag: d7106f32-d1b7-4be5-b54e-f386169fab77
+		summarizeBy: none
+		sourceColumn: Descripcion
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalarioMinimo
+		dataType: double
+		lineageTag: 4bbee981-6a07-4b24-91dc-ba4437b3358d
+		summarizeBy: none
+		sourceColumn: SalarioMinimo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalarioMedio
+		dataType: double
+		lineageTag: 03fc9768-b5a8-444f-8bc9-7c823133f474
+		summarizeBy: none
+		sourceColumn: SalarioMedio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SalarioMaximo
+		dataType: double
+		lineageTag: e59b893e-ef32-42e2-9876-46eed3dc403b
+		summarizeBy: none
+		sourceColumn: SalarioMaximo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Moneda
+		dataType: string
+		lineageTag: 860fe4ac-13f6-40a6-b438-1aefde7dd351
+		summarizeBy: none
+		sourceColumn: Moneda
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEscalaSalarial = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimEscalaSalarial = Source{[Schema = "dm", Item = "DimEscalaSalarial"]}[Data]
+				in
+				  DimEscalaSalarial
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

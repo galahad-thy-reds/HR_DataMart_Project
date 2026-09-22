@@ -1,0 +1,182 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bcd5171ee98b5158ba6a",
+  "position": {
+    "x": 962.16704288939093,
+    "y": 495.53047404063216,
+    "z": 6000,
+    "height": 307.72009029345372,
+    "width": 647.22347629796843,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHabilidad"
+                    }
+                  },
+                  "Property": "Categoria"
+                }
+              },
+              "queryRef": "DimHabilidad.Categoria",
+              "nativeQueryRef": "Habilidad",
+              "active": true,
+              "displayName": "Habilidad"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHabilidad"
+                    }
+                  },
+                  "Property": "CriticaDesc"
+                }
+              },
+              "queryRef": "DimHabilidad.CriticaDesc",
+              "nativeQueryRef": "Critica",
+              "active": false,
+              "displayName": "Critica"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactHabilidadEmpleado"
+                    }
+                  },
+                  "Property": "EsObligatoriaDesc"
+                }
+              },
+              "queryRef": "FactHabilidadEmpleado.EsObligatoriaDesc",
+              "nativeQueryRef": "Obligatoria",
+              "active": false,
+              "displayName": "Obligatoria"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactHabilidadEmpleado"
+                    }
+                  },
+                  "Property": "GapDesc"
+                }
+              },
+              "queryRef": "FactHabilidadEmpleado.GapDesc",
+              "nativeQueryRef": "Gap Descripcion",
+              "active": false,
+              "displayName": "Gap Descripcion"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Values"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "DimHabilidad.Categoria"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHabilidad"
+                    }
+                  },
+                  "Property": "Categoria"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "DimHabilidad.CriticaDesc"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHabilidad"
+                    }
+                  },
+                  "Property": "CriticaDesc"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "FactHabilidadEmpleado.EsObligatoriaDesc"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactHabilidadEmpleado"
+                    }
+                  },
+                  "Property": "EsObligatoriaDesc"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "FactHabilidadEmpleado.GapDesc"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

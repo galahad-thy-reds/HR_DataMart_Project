@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a422180d903f4ba5ff7c",
+  "position": {
+    "x": 515.94713656387671,
+    "y": 63.436123348017624,
+    "z": 2001,
+    "height": 150.83700440528634,
+    "width": 934.625550660793,
+    "tabOrder": 2001
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "28 - Salario promedio actual"
+                }
+              },
+              "queryRef": "_Medidas.28 - Salario promedio actual",
+              "nativeQueryRef": "Salario promedio actual",
+              "displayName": "Salario promedio actual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "33 - Masa salarial actual"
+                }
+              },
+              "queryRef": "_Medidas.33 - Masa salarial actual",
+              "nativeQueryRef": "Masa salarial actual",
+              "displayName": "Masa salarial actual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "35 - Gap género % actual"
+                }
+              },
+              "queryRef": "_Medidas.35 - Gap género % actual",
+              "nativeQueryRef": "Gap género % actual",
+              "displayName": "Gap género % actual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "39 - % bajo banda actual"
+                }
+              },
+              "queryRef": "_Medidas.39 - % bajo banda actual",
+              "nativeQueryRef": "% bajo banda actual",
+              "displayName": "% bajo banda actual"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "28 - Salario promedio actual"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

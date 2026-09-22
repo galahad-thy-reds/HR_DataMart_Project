@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0346a20a332831931b7c",
+  "position": {
+    "x": 196.47855530474021,
+    "y": 0,
+    "z": 1000,
+    "height": 112.686230248307,
+    "width": 196.47855530474041
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "20 - Gaps críticos"
+                }
+              },
+              "queryRef": "_Medidas.20 - Gaps críticos",
+              "nativeQueryRef": "Gaps críticos",
+              "displayName": "Gaps críticos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "20 - Gaps críticos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "26ad17df51d1c81a5b6b"
+}

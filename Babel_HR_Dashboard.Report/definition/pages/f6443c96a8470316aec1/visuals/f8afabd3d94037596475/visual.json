@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f8afabd3d94037596475",
+  "position": {
+    "x": 515.94713656387671,
+    "y": 565.2863436123348,
+    "z": 2005,
+    "height": 311.54185022026434,
+    "width": 934.625550660793,
+    "tabOrder": 2005
+  },
+  "visual": {
+    "visualType": "hundredPercentStackedBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDepartamento"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimDepartamento.Nombre",
+              "nativeQueryRef": "Departamento",
+              "active": true,
+              "displayName": "Departamento"
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactHeadcountMensual"
+                    }
+                  },
+                  "Property": "EstadoBanda"
+                }
+              },
+              "queryRef": "FactHeadcountMensual.EstadoBanda",
+              "nativeQueryRef": "Estado de Banda",
+              "displayName": "Estado de Banda"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "03 - Headcount mes"
+                }
+              },
+              "queryRef": "_Medidas.03 - Headcount mes",
+              "nativeQueryRef": "Headcount mes",
+              "displayName": "Headcount mes"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

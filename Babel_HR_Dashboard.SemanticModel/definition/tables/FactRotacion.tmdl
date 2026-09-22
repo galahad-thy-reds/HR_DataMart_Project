@@ -1,0 +1,179 @@
+table FactRotacion
+	lineageTag: 77cbdf35-893c-477f-8804-a8f4a5f5b90e
+
+	column FactRotacionID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ebed213f-05e7-44e9-9cb4-34660b6bd584
+		summarizeBy: count
+		sourceColumn: FactRotacionID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaSalidaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2d05a53f-396a-43a0-98e6-484b252a8ce0
+		summarizeBy: none
+		sourceColumn: FechaSalidaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpleadoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5164ac71-15e6-4455-8bf9-9cfb6dcc9c54
+		summarizeBy: none
+		sourceColumn: EmpleadoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartamentoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7a55afe9-ca35-4bb8-b726-af79a08053e2
+		summarizeBy: none
+		sourceColumn: DepartamentoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PuestoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fd8ab6d2-5f9e-4729-a29b-4f26f248dd69
+		summarizeBy: none
+		sourceColumn: PuestoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 15bacffa-7363-425e-bffe-ef5fb80a333f
+		summarizeBy: none
+		sourceColumn: UbicacionKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MotivoSalidaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d408394c-13f2-47be-92de-7e37b249273c
+		summarizeBy: none
+		sourceColumn: MotivoSalidaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AntiguedadMeses
+		dataType: int64
+		formatString: 0
+		lineageTag: 49995a0e-0fc0-4e07-a3ac-69a0ceab7f45
+		summarizeBy: sum
+		sourceColumn: AntiguedadMeses
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalarioAlSalir
+		dataType: double
+		lineageTag: 20ccff5a-d3af-4627-8f23-c7282a874b15
+		summarizeBy: sum
+		sourceColumn: SalarioAlSalir
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ContadorSalida
+		dataType: int64
+		formatString: 0
+		lineageTag: 861d76f5-0c55-436f-98d8-e5b48129cd40
+		summarizeBy: sum
+		sourceColumn: ContadorSalida
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsEvitable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 55178c2f-a6da-4053-91cb-c33c9f02ed6f
+		summarizeBy: none
+		sourceColumn: EsEvitable
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangoAntiguedad =
+			
+			VAR m = FactRotacion[AntiguedadMeses]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        m < 6, "0-6 meses",
+			        m < 12, "6-12 meses",
+			        m < 24, "1-2 años",
+			        m < 48, "2-4 años",
+			        "4+ años"
+			    )
+		lineageTag: 40f28e67-a6f2-4fbb-bb07-cbbbd1b42229
+		summarizeBy: none
+		sortByColumn: RangoAntiguedadOrden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangoAntiguedadOrden =
+			
+			VAR Meses = FactRotacion[AntiguedadMeses]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        Meses < 6, 1,
+			        Meses < 12, 2,
+			        Meses < 24, 3,
+			        Meses < 48, 4,
+			        5
+			    )
+		isHidden
+		formatString: 0
+		lineageTag: 25efffb9-a49d-4083-8b03-24cbd6d61bb5
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactRotacion = m
+		mode: import
+		queryGroup: Hechos
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  FactRotacion = Source{[Schema = "dm", Item = "FactRotacion"]}[Data]
+				in
+				  FactRotacion
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

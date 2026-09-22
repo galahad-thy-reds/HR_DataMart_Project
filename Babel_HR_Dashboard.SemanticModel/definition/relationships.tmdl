@@ -1,0 +1,160 @@
+relationship 7a5be38c-4458-42d3-9cbd-292ce3c907d4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimEmpleado.FechaNacimiento
+	toColumn: LocalDateTable_71a820b3-0f67-48e1-9275-9c5bb10612f9.Date
+
+relationship d3fa1568-1e31-4559-ab1d-eac29b581e89
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimEmpleado.FechaContratacion
+	toColumn: LocalDateTable_c5b5508d-f99a-417f-893e-c2cb8e39f9e1.Date
+
+relationship 395ba888-ee53-4396-b7cf-bb57fc07c46d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimEmpleado.FechaInicioValidez
+	toColumn: LocalDateTable_00f3b132-c05c-428f-b0b0-eec6ffc6d390.Date
+
+relationship b83ac09b-a569-46b1-987b-b536755a9c2f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimEmpleado.FechaFinValidez
+	toColumn: LocalDateTable_f020148c-9904-4aa9-a6d0-8a0af088d362.Date
+
+relationship 944e2a00-0ac0-4481-90fc-f329cfd3e488
+	fromColumn: FactAusentismo.DepartamentoKey
+	toColumn: DimDepartamento.DepartamentoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5ad73001-18ab-42da-a544-fcf5c43cb5dd
+	fromColumn: FactAusentismo.EmpleadoKey
+	toColumn: DimEmpleado.EmpleadoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 5d69f860-15bc-4385-b87b-c80bf8e134cc
+	fromColumn: FactAusentismo.FechaFinKey
+	toColumn: DimFecha.FechaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship f3e9edcc-5775-4b24-ab33-fdd47ace03a2
+	isActive: false
+	fromColumn: FactAusentismo.FechaInicioKey
+	toColumn: DimFecha.FechaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 6317b22b-92ce-4dee-9dbc-4df58593f690
+	fromColumn: FactAusentismo.PuestoKey
+	toColumn: DimPuesto.PuestoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 0117420d-07b4-45f0-8e2f-914ff6b06842
+	fromColumn: FactAusentismo.TipoAusenciaKey
+	toColumn: DimTipoAusencia.TipoAusenciaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 888bd2c7-978e-485a-ae37-8f4369b96833
+	fromColumn: FactHabilidadEmpleado.DepartamentoKey
+	toColumn: DimDepartamento.DepartamentoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 2a85bf95-bdaf-48eb-8279-042a5cd9616d
+	fromColumn: FactHabilidadEmpleado.EmpleadoKey
+	toColumn: DimEmpleado.EmpleadoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship fee544df-782c-4322-b891-646a588716e4
+	fromColumn: FactHabilidadEmpleado.FechaEvaluacionKey
+	toColumn: DimFecha.FechaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship cf2c6237-7171-4ffc-aa31-13a4fa87801c
+	fromColumn: FactHabilidadEmpleado.HabilidadKey
+	toColumn: DimHabilidad.HabilidadKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 3feb73b9-5aa8-4b33-aad9-a565b0b2644a
+	fromColumn: FactHabilidadEmpleado.PuestoKey
+	toColumn: DimPuesto.PuestoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 3ca579dd-0924-4dea-802f-e599687e6ca3
+	fromColumn: FactHeadcountMensual.DepartamentoKey
+	toColumn: DimDepartamento.DepartamentoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship b38f3cb7-2aef-4588-b9a9-dd92f451ccd5
+	fromColumn: FactHeadcountMensual.EmpleadoKey
+	toColumn: DimEmpleado.EmpleadoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship c57ff33d-4e4d-471a-b30f-8065d89a7b2c
+	fromColumn: FactHeadcountMensual.EscalaSalarialKey
+	toColumn: DimEscalaSalarial.EscalaSalarialKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship b357c22d-21aa-4b87-bbc5-a1e4f490911a
+	fromColumn: FactHeadcountMensual.FechaKey
+	toColumn: DimFecha.FechaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship d2ff770a-f9f9-4eb1-9d68-e85378226a49
+	fromColumn: FactHeadcountMensual.PuestoKey
+	toColumn: DimPuesto.PuestoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship a02635d6-d788-4168-b937-a2280ad269c5
+	fromColumn: FactHeadcountMensual.UbicacionKey
+	toColumn: DimUbicacion.UbicacionKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 95eba8d7-722f-4676-a9f0-4e2e2d84156a
+	fromColumn: FactRotacion.DepartamentoKey
+	toColumn: DimDepartamento.DepartamentoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 8c5b606a-22b0-427b-8db4-c06ce2c0c751
+	crossFilteringBehavior: bothDirections
+	fromColumn: FactRotacion.EmpleadoKey
+	toColumn: DimEmpleado.EmpleadoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 11c3b0da-6010-45cb-8806-2689ba01fe75
+	fromColumn: FactRotacion.FechaSalidaKey
+	toColumn: DimFecha.FechaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship e178e1dc-3014-4a11-a024-88c3b4d802f7
+	fromColumn: FactRotacion.MotivoSalidaKey
+	toColumn: DimMotivoSalida.MotivoSalidaKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship 548991b8-0252-4b77-9b0a-09cf667bc48d
+	fromColumn: FactRotacion.PuestoKey
+	toColumn: DimPuesto.PuestoKey
+
+	annotation PBI_IsFromSource = FS
+
+relationship f9232e93-a749-4f7c-a280-5c90e56699e5
+	fromColumn: FactRotacion.UbicacionKey
+	toColumn: DimUbicacion.UbicacionKey
+
+	annotation PBI_IsFromSource = FS
+

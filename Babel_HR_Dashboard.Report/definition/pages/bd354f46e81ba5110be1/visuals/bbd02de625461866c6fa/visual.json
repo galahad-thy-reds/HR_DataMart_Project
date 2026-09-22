@@ -1,0 +1,92 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bbd02de625461866c6fa",
+  "position": {
+    "x": 1012.7313769751698,
+    "y": 774.35665914221227,
+    "z": 8000,
+    "height": 300.49661399548535,
+    "width": 440.63205417607224,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimMotivoSalida"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimMotivoSalida.Nombre",
+              "nativeQueryRef": "Motivo de salida",
+              "active": true,
+              "displayName": "Motivo de salida"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "10 - Antigüedad media al salir"
+                }
+              },
+              "queryRef": "_Medidas.10 - Antigüedad media al salir",
+              "nativeQueryRef": "Antigüedad media (en meses) al salir",
+              "displayName": "Antigüedad media (en meses) al salir"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "11 - Salario al salir promedio"
+                }
+              },
+              "queryRef": "_Medidas.11 - Salario al salir promedio",
+              "nativeQueryRef": "Salario al salir promedio",
+              "displayName": "Salario al salir promedio"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "10 - Antigüedad media al salir"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

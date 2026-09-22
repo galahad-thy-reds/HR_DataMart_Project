@@ -1,0 +1,132 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "a87fe551833f5adc00bb",
+  "position": {
+    "x": 513.12775330396482,
+    "y": 876.82819383259914,
+    "z": 2006,
+    "height": 202.9955947136564,
+    "width": 941.67400881057267,
+    "tabOrder": 2006
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "29 - Salario mín"
+                }
+              },
+              "queryRef": "_Medidas.29 - Salario mín",
+              "nativeQueryRef": "Salario mín",
+              "displayName": "Salario mín"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "27 - Salario promedio"
+                }
+              },
+              "queryRef": "_Medidas.27 - Salario promedio",
+              "nativeQueryRef": "Salario prom",
+              "displayName": "Salario prom"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "30 - Salario máx"
+                }
+              },
+              "queryRef": "_Medidas.30 - Salario máx",
+              "nativeQueryRef": "Salario máx",
+              "displayName": "Salario máx"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "40 - Banda mínima"
+                }
+              },
+              "queryRef": "_Medidas.40 - Banda mínima",
+              "nativeQueryRef": "Banda mín",
+              "displayName": "Banda mín"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "41 - Banda media"
+                }
+              },
+              "queryRef": "_Medidas.41 - Banda media",
+              "nativeQueryRef": "Banda med",
+              "displayName": "Banda med"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "42 - Banda máxima"
+                }
+              },
+              "queryRef": "_Medidas.42 - Banda máxima",
+              "nativeQueryRef": "Banda máx",
+              "displayName": "Banda máx"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "29 - Salario mín"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

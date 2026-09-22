@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "0bb7df81c7e689ea50e9",
+  "position": {
+    "x": 570.65462753950339,
+    "y": 56.3431151241535,
+    "z": 4000,
+    "height": 150.24830699774267,
+    "width": 882.70880361173818,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "06 - Salidas"
+                }
+              },
+              "queryRef": "_Medidas.06 - Salidas",
+              "nativeQueryRef": "Salidas",
+              "displayName": "Salidas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "08 - Tasa rotación %"
+                }
+              },
+              "queryRef": "_Medidas.08 - Tasa rotación %",
+              "nativeQueryRef": "Tasa rotación %",
+              "displayName": "Tasa rotación %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "09 - % salidas evitables"
+                }
+              },
+              "queryRef": "_Medidas.09 - % salidas evitables",
+              "nativeQueryRef": "% salidas evitables",
+              "displayName": "% salidas evitables"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "10 - Antigüedad media al salir"
+                }
+              },
+              "queryRef": "_Medidas.10 - Antigüedad media al salir",
+              "nativeQueryRef": "Antigüedad media al salir",
+              "displayName": "Antigüedad media al salir"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "06 - Salidas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

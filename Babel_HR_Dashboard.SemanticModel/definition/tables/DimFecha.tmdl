@@ -1,0 +1,146 @@
+table DimFecha
+	lineageTag: 86080882-19cd-48a2-afa4-7f10a6242ec4
+	dataCategory: Time
+
+	column FechaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bf57ccf9-ce73-4cae-8ac3-207d13f3fe85
+		summarizeBy: none
+		sourceColumn: FechaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: 05c1de30-9c22-438e-a3bc-423368294d4e
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Anio
+		dataType: int64
+		formatString: 0
+		lineageTag: f5ae1f09-fd83-44c6-8e67-95ae1a13f0f4
+		summarizeBy: sum
+		sourceColumn: Anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 97c93c5b-3fcb-4afe-a6ac-8273d83481c4
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreMes
+		dataType: string
+		lineageTag: 95ad7bf8-e81c-439f-84fc-8d07151e7636
+		summarizeBy: none
+		sourceColumn: NombreMes
+		sortByColumn: Mes
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2740e5b6-a5eb-46ba-a8af-cdfbd9713a98
+		summarizeBy: sum
+		sourceColumn: Trimestre
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreTrimestre
+		dataType: string
+		lineageTag: 95b2a3bf-b60c-41f0-b662-12778f4af7de
+		summarizeBy: none
+		sourceColumn: NombreTrimestre
+		sortByColumn: Trimestre
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanaAnio
+		dataType: int64
+		formatString: 0
+		lineageTag: 857492c3-2c47-42f1-a0cf-b39b963c2071
+		summarizeBy: sum
+		sourceColumn: SemanaAnio
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemana
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b989dfd8-cb30-47f5-9946-f534ee9d05fb
+		summarizeBy: sum
+		sourceColumn: DiaSemana
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreDiaSemana
+		dataType: string
+		lineageTag: cf806bc5-855e-46f8-89b7-79822f1d001a
+		summarizeBy: none
+		sourceColumn: NombreDiaSemana
+		sortByColumn: DiaSemana
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsFinDeSemana
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bf371a0f-e6b3-45a1-a547-66e041c2948a
+		summarizeBy: none
+		sourceColumn: EsFinDeSemana
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioMes
+		dataType: string
+		lineageTag: 5ea9337d-9e45-4844-872f-5ac48908b359
+		summarizeBy: none
+		sourceColumn: AnioMes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFecha = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimFecha = Source{[Schema = "dm", Item = "DimFecha"]}[Data]
+				in
+				  DimFecha
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

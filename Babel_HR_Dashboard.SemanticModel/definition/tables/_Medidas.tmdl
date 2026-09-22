@@ -1,0 +1,346 @@
+table _Medidas
+	lineageTag: 45b3434d-6ba0-4cc5-8b1c-6e12bafcf36b
+
+	measure '01 - Días laborables mes' = 22
+		formatString: 0
+		lineageTag: 6a530a1e-1a5b-41f7-8975-72eaf3d23522
+
+	measure '02 - Ultimo AnioMes' =
+			
+			CALCULATE (
+			    MAX ( DimFecha[AnioMes] ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		lineageTag: 5a6ad79e-37e4-48f9-83ab-db6ce34ead64
+
+	measure '03 - Headcount mes' =
+			
+			CALCULATE (
+			    COUNTROWS ( FactHeadcountMensual ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		formatString: 0
+		lineageTag: 34217a6a-553a-4cb5-831d-479ca8651849
+
+	measure '04 - Headcount promedio' =
+			
+			AVERAGEX (
+			    SUMMARIZE ( FactHeadcountMensual, DimFecha[AnioMes] ),
+			    [03 - Headcount mes]
+			)
+		formatString: 0
+		lineageTag: 1c6ad6f5-3b8d-4b2a-839e-01ccc8e56351
+
+	measure '05 - Headcount actual' =
+			
+			VAR Periodo = [02 - Ultimo AnioMes]
+			RETURN
+			    CALCULATE (
+			        [03 - Headcount mes],
+			        FILTER ( ALL ( DimFecha[AnioMes] ), DimFecha[AnioMes] = Periodo )
+			    )
+		formatString: 0
+		lineageTag: e0760e4a-d597-4210-83fa-8336825afef0
+
+	measure '06 - Salidas' = ```
+			SUM ( FactRotacion[ContadorSalida] )
+			
+			```
+		formatString: 0
+		lineageTag: a7bfb5a6-d884-4bf4-96af-c99a450c76a6
+
+	measure '07 - Salidas evitables' =
+			
+			CALCULATE ( [06 - Salidas], DimMotivoSalida[EsEvitable] = TRUE () )
+		formatString: 0
+		lineageTag: 31fca951-0e45-45c7-b366-d7c6eb950882
+
+	measure '08 - Tasa rotación %' = ```
+			
+			DIVIDE ( [06 - Salidas], [04 - Headcount promedio] )
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 96289c70-f962-4c3d-8fbd-6caf040963f2
+
+	measure '09 - % salidas evitables' =
+			
+			DIVIDE ( [07 - Salidas evitables], [06 - Salidas] )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1202af48-8557-49f4-b060-14d99fae7673
+
+	measure '10 - Antigüedad media al salir' =
+			
+			AVERAGE ( FactRotacion[AntiguedadMeses] )
+		formatString: 0.0
+		lineageTag: 684ababc-9ca6-48eb-b156-fcd5156a5609
+
+	measure '11 - Salario al salir promedio' = ```
+			
+			AVERAGE ( FactRotacion[SalarioAlSalir] )
+			
+			```
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: ebc41a05-a12a-41c7-84fc-5824afac10f6
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '12 - Eventos ausencia' = SUM ( FactAusentismo[ContadorEvento] )
+		formatString: 0
+		lineageTag: 98593596-d8e7-40e3-8c88-eeb6ceed598e
+
+	measure '13 - Días ausencia' = SUM ( FactAusentismo[DiasLaborales] )
+		formatString: 0.0
+		lineageTag: 8d24a882-5e33-4470-a914-ec2e8756b125
+
+	measure '14 - Días impacto productividad' = ```
+			
+			CALCULATE ( [13 - Días ausencia], DimTipoAusencia[AfectaProductividad] = TRUE () )
+			
+			```
+		formatString: 0.0
+		lineageTag: c6b0f7ae-5ebe-47ee-bf3a-64d7f06923ab
+
+	measure '15 - Tasa ausentismo %' =
+			
+			DIVIDE ( [13 - Días ausencia], [04 - Headcount promedio] * [01 - Días laborables mes] )/100
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 4f7d5bfe-0445-4d2f-9d01-1ae8668912e8
+
+	measure '16 - % días con impacto productividad' =
+			
+			DIVIDE ( [14 - Días impacto productividad], [13 - Días ausencia] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b0fbe06b-04e3-4af4-9a55-c0a682417386
+
+	measure '17 - Requisitos skill' = COUNTROWS ( FactHabilidadEmpleado )
+		formatString: 0
+		lineageTag: 309d0cb1-84e4-4b5f-ac3a-75928a1a81e8
+
+	measure '18 - Requisitos críticos' =
+			
+			CALCULATE ( [17 - Requisitos skill], DimHabilidad[IsCritical] = TRUE () )
+		formatString: 0
+		lineageTag: aefe4b1f-ddba-4b91-bfbd-e5974490eac8
+
+	measure '19 - Gaps' =
+			
+			CALCULATE (
+			    COUNTROWS ( FactHabilidadEmpleado ),
+			    FactHabilidadEmpleado[TieneGapN] = 1
+			)
+		formatString: 0
+		lineageTag: b9a9a48d-19d1-452b-9abe-3001333c8fe7
+
+	measure '20 - Gaps críticos' = ```
+			
+			CALCULATE ( [19 - Gaps], DimHabilidad[IsCritical] = TRUE () )
+			
+			```
+		formatString: 0
+		lineageTag: 948756a7-7e0f-4b56-8a9f-bcc1d2bd2cea
+
+	measure '21 - % gaps' =
+			
+			DIVIDE ( [19 - Gaps], [17 - Requisitos skill] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8d20ef81-3f09-4f49-a064-16e90161fb1d
+
+	measure '22 - % gaps críticos' =
+			
+			DIVIDE ( [20 - Gaps críticos], [18 - Requisitos críticos] )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: dba46617-4248-4f07-aa9d-e3deb82ffa43
+
+	measure '23 - % gaps (perfil actual)' =
+			
+			CALCULATE ( [21 - % gaps], REMOVEFILTERS ( DimFecha ) )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b300d2b8-ea54-4692-969a-1bb2c84beb2b
+
+	measure '24 - Nivel actual promedio' =
+			
+			AVERAGE ( FactHabilidadEmpleado[NivelActual] )
+		formatString: 0.0
+		lineageTag: 230461b1-e8c9-4317-b5ee-fa098b41e466
+
+	measure '25 - Nivel requerido promedio' =
+			
+			AVERAGE ( FactHabilidadEmpleado[NivelRequerido] )
+		formatString: 0.0
+		lineageTag: 0b966852-fce6-4a70-90cd-4439a1111971
+
+	measure '26 - Diferencia de niveles promedio' =
+			
+			AVERAGE ( FactHabilidadEmpleado[DiferenciaNiveles] )
+		formatString: 0.0
+		lineageTag: 584f29a5-1840-42b8-832d-9d28433746df
+
+	measure '27 - Salario promedio' =
+			
+			CALCULATE (
+			    AVERAGE ( FactHeadcountMensual[Salario] ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: 5499f5e3-e76b-4d3f-9490-e84080e3c149
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '28 - Salario promedio actual' =
+			
+			VAR Periodo = [02 - Ultimo AnioMes]
+			RETURN
+			    CALCULATE (
+			        [27 - Salario promedio],
+			        FILTER ( ALL ( DimFecha[AnioMes] ), DimFecha[AnioMes] = Periodo )
+			    )
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: 5019b9e5-93f9-41bb-a2f0-a1f709bbe4b6
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '29 - Salario mín' =
+			
+			CALCULATE (
+			    MIN ( FactHeadcountMensual[Salario] ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: c245636b-43f7-4160-887a-ffd8f91ebb50
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '30 - Salario máx' =
+			
+			CALCULATE (
+			    MAX ( FactHeadcountMensual[Salario] ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: 2592dddf-2702-4474-91dd-ff944a6fa2bf
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '31 - Masa salarial mes' =
+			
+			CALCULATE (
+			    SUM ( FactHeadcountMensual[Salario] ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: cce3a94d-1313-4bc6-8e30-121864569713
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '32 - Masa salarial promedio' =
+			
+			AVERAGEX (
+			    SUMMARIZE ( FactHeadcountMensual, DimFecha[AnioMes] ),
+			    [31 - Masa salarial mes]
+			)
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: a21fef73-246c-49cc-afd0-a01c282adf1d
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '33 - Masa salarial actual' =
+			
+			VAR Periodo = [02 - Ultimo AnioMes]
+			RETURN
+			    CALCULATE (
+			        [31 - Masa salarial mes],
+			        FILTER ( ALL ( DimFecha[AnioMes] ), DimFecha[AnioMes] = Periodo )
+			    )
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: 6a9c8b02-5d2b-4582-b303-eca454d3c5a7
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '34 - Gap género %' =
+			
+			VAR PromM = CALCULATE ( [27 - Salario promedio], DimEmpleado[Genero] = "M" )
+			VAR PromF = CALCULATE ( [27 - Salario promedio], DimEmpleado[Genero] = "F" )
+			RETURN
+			    DIVIDE ( PromM - PromF, PromM )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 81473a82-4870-4800-b1ae-28ff7919912d
+
+	measure '35 - Gap género % actual' =
+			
+			VAR PromM = CALCULATE ( [28 - Salario promedio actual], DimEmpleado[Genero] = "M" )
+			VAR PromF = CALCULATE ( [28 - Salario promedio actual], DimEmpleado[Genero] = "F" )
+			RETURN
+			    DIVIDE ( PromM - PromF, PromM )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 18be9f8a-b0a8-479a-80e9-74178a8d5c74
+
+	measure '36 - Posición en banda promedio' =
+			
+			CALCULATE (
+			    AVERAGE ( FactHeadcountMensual[PosicionEnBandaPct] ),
+			    FactHeadcountMensual[EsActivoN] = 1
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2e42c3a2-5e4d-4c1c-a680-73075a4ef425
+
+	measure '37 - % bajo banda' =
+			
+			DIVIDE (
+			    CALCULATE ( [03 - Headcount mes], FactHeadcountMensual[EstadoBanda] = "Bajo banda" ),
+			    [03 - Headcount mes]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c1df9807-0848-4c12-840a-1c34571ab1d1
+
+	measure '38 - % sobre banda' =
+			
+			DIVIDE (
+			    CALCULATE ( [03 - Headcount mes], FactHeadcountMensual[EstadoBanda] = "Sobre banda" ),
+			    [03 - Headcount mes]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: e2a82462-5652-4e3f-926c-82ba863a74db
+
+	measure '39 - % bajo banda actual' =
+			
+			VAR Periodo = [02 - Ultimo AnioMes]
+			RETURN
+			    CALCULATE (
+			        [37 - % bajo banda],
+			        FILTER ( ALL ( DimFecha[AnioMes] ), DimFecha[AnioMes] = Periodo )
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8fc06d90-708c-47b2-a19c-aa2bfaa6e015
+
+	measure '40 - Banda mínima' = MIN ( DimEscalaSalarial[SalarioMinimo] )
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: 9dacb515-220d-459e-b149-ec65a0efd10e
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '41 - Banda media' = MIN ( DimEscalaSalarial[SalarioMedio] )
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: e0822d2a-de75-46f7-9915-a79f854f6a8d
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	measure '42 - Banda máxima' = MIN ( DimEscalaSalarial[SalarioMaximo] )
+		formatString: "₡"#,0.00;-"₡"#,0.00;"₡"#,0.00
+		lineageTag: dace8b56-389a-40ef-a003-ec91c82279db
+
+		annotation PBI_FormatHint = {"currencyCulture":"es-CR"}
+
+	partition _Medidas = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WileKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				  #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

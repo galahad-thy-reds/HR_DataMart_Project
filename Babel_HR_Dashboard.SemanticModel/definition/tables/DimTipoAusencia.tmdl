@@ -1,0 +1,99 @@
+table DimTipoAusencia
+	lineageTag: ee3f8e14-4bcd-4891-b05f-c0e28b1f04c2
+
+	column TipoAusenciaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: efac3fa1-6d5c-4918-a0f9-426c0a67c8fb
+		summarizeBy: none
+		sourceColumn: TipoAusenciaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoAusenciaBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b6c0bd5e-c525-4812-a800-7505a82ee4dc
+		summarizeBy: none
+		sourceColumn: TipoAusenciaBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: ef8ddc91-9e5d-462b-97c3-aa1e08608b75
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: 83efc7d0-49d9-41c0-8cdf-c174fae47304
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsRemunerada
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 45312216-9817-4837-892e-a669cf5d152f
+		summarizeBy: none
+		sourceColumn: EsRemunerada
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AfectaProductividad
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4a7fd6b7-2aa5-40d5-b5fb-75e13ee02c39
+		summarizeBy: none
+		sourceColumn: AfectaProductividad
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImpactoProdDesc = ```
+			
+			IF ( DimTipoAusencia[AfectaProductividad], "Afecta productividad", "No afecta productividad" )
+			
+			```
+		lineageTag: d4f69904-aa65-42e8-baf6-3742ea1dfb77
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsRemuneradaDesc = ```
+			
+			IF ( DimTipoAusencia[EsRemunerada], "Remunerada", "No remunerada" )
+			
+			```
+		lineageTag: d0cbea76-db16-4a72-9e6e-55531ef5a23d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimTipoAusencia = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimTipoAusencia = Source{[Schema = "dm", Item = "DimTipoAusencia"]}[Data]
+				in
+				  DimTipoAusencia
+
+	annotation PBI_ResultType = Table
+

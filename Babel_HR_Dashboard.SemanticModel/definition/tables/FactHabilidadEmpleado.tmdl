@@ -1,0 +1,203 @@
+table FactHabilidadEmpleado
+	lineageTag: 1cb581b0-2f94-4ad3-96b0-3ce2f388a9cf
+
+	column FactHabilidadID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5f387952-33da-4a38-ada6-5fe166adfeae
+		summarizeBy: count
+		sourceColumn: FactHabilidadID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaEvaluacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 70547af0-23b4-4576-b6bc-1f34a1a6330a
+		summarizeBy: none
+		sourceColumn: FechaEvaluacionKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpleadoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c55bbf08-de8a-426b-bb8b-6525878693a4
+		summarizeBy: none
+		sourceColumn: EmpleadoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartamentoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 86553a27-616b-4a54-ae9a-b38aa97621c4
+		summarizeBy: none
+		sourceColumn: DepartamentoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PuestoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c1c64232-de2d-4d38-b319-873d7268af52
+		summarizeBy: none
+		sourceColumn: PuestoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column HabilidadKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6241581e-64a0-48be-b5c6-b93afd577d5b
+		summarizeBy: none
+		sourceColumn: HabilidadKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelActual
+		dataType: int64
+		formatString: 0
+		lineageTag: d53c5a3d-eac5-4932-8c59-149d0ed8a077
+		summarizeBy: sum
+		sourceColumn: NivelActual
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelRequerido
+		dataType: int64
+		formatString: 0
+		lineageTag: 3390b3d6-4a81-4a92-9dc9-0267b9c88230
+		summarizeBy: sum
+		sourceColumn: NivelRequerido
+
+		annotation SummarizationSetBy = Automatic
+
+	column TieneGap
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 05aa704a-ec61-4895-a1b2-567efbd4d941
+		summarizeBy: none
+		sourceColumn: TieneGap
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiferenciaNiveles
+		dataType: int64
+		formatString: 0
+		lineageTag: ad37da97-962f-4a81-99e8-95eae35358e3
+		summarizeBy: sum
+		sourceColumn: DiferenciaNiveles
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsCritica
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b13eca1f-b3a1-4a74-9666-c29df9096c9d
+		summarizeBy: none
+		sourceColumn: EsCritica
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsObligatoria
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: aa5e0f20-27e2-4d3b-a347-fbcee43a6e27
+		summarizeBy: none
+		sourceColumn: EsObligatoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsObligatoriaDesc =
+			
+			IF ( FactHabilidadEmpleado[EsObligatoria], "Obligatoria", "Deseable" )
+		lineageTag: 5872c02e-1feb-42f7-9240-07ce2687f802
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column GapDesc =
+			
+			IF ( FactHabilidadEmpleado[TieneGap], "Con gap", "Sin gap" )
+		lineageTag: 177b0b84-7164-4459-9630-316348e83d92
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelActualDesc =
+			
+			SWITCH (
+			    FactHabilidadEmpleado[NivelActual],
+			    1, "1 · Básico",
+			    2, "2 · Intermedio",
+			    3, "3 · Avanzado",
+			    4, "4 · Experto",
+			    5, "5 · Maestro",
+			    "Sin evaluación"
+			)
+		lineageTag: 887da70f-3123-4e3b-993a-f671d2846e18
+		summarizeBy: none
+		sortByColumn: NivelActual
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelRequeridoDesc =
+			
+			SWITCH (
+			    FactHabilidadEmpleado[NivelRequerido],
+			    1, "1 · Básico",
+			    2, "2 · Intermedio",
+			    3, "3 · Avanzado",
+			    4, "4 · Experto",
+			    5, "5 · Maestro"
+			)
+		lineageTag: 415ec4e8-415f-4720-81ac-b0d058c179a6
+		summarizeBy: none
+		sortByColumn: NivelRequerido
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column TieneGapN = INT ( FactHabilidadEmpleado[TieneGap] )
+		formatString: 0
+		lineageTag: 0fcea09a-6df7-4504-823b-477dbf0caa1a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactHabilidadEmpleado = m
+		mode: import
+		queryGroup: Hechos
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  FactHabilidadEmpleado = Source{[Schema = "dm", Item = "FactHabilidadEmpleado"]}[Data]
+				in
+				  FactHabilidadEmpleado
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,102 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "cbac24a1587bfad15d96",
+  "position": {
+    "x": 554.762979683973,
+    "y": 63.5665914221219,
+    "z": 3000,
+    "height": 150.24830699774267,
+    "width": 811.91873589164788,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "13 - Días ausencia"
+                }
+              },
+              "queryRef": "_Medidas.13 - Días ausencia",
+              "nativeQueryRef": "Días ausencia",
+              "displayName": "Días ausencia"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "12 - Eventos ausencia"
+                }
+              },
+              "queryRef": "_Medidas.12 - Eventos ausencia",
+              "nativeQueryRef": "Eventos ausencia",
+              "displayName": "Eventos ausencia"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "15 - Tasa ausentismo %"
+                }
+              },
+              "queryRef": "_Medidas.15 - Tasa ausentismo %",
+              "nativeQueryRef": "Tasa ausentismo %",
+              "displayName": "Tasa ausentismo %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "16 - % días con impacto productividad"
+                }
+              },
+              "queryRef": "_Medidas.16 - % días con impacto productividad",
+              "nativeQueryRef": "% días con impacto productividad",
+              "displayName": "% días con impacto productividad"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "13 - Días ausencia"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

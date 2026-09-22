@@ -1,0 +1,91 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "c00eb846190dd0158567",
+  "position": {
+    "x": 567.95398520953154,
+    "y": 0,
+    "z": 2000,
+    "height": 63.10599835661462,
+    "width": 279.24404272801968,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPuesto"
+                    }
+                  },
+                  "Property": "FamiliaPuesto"
+                }
+              },
+              "queryRef": "DimPuesto.FamiliaPuesto",
+              "nativeQueryRef": "Familia (Puesto)",
+              "active": true,
+              "displayName": "Familia (Puesto)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPuesto"
+                    }
+                  },
+                  "Property": "NivelJerarquicoDesc"
+                }
+              },
+              "queryRef": "DimPuesto.NivelJerarquicoDesc",
+              "nativeQueryRef": "Jerarquia",
+              "active": false,
+              "displayName": "Jerarquia"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "syncGroup": {
+      "groupName": "FamiliaPuesto",
+      "fieldChanges": true,
+      "filterChanges": true
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

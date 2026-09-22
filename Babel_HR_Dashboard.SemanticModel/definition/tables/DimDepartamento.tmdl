@@ -1,0 +1,65 @@
+table DimDepartamento
+	lineageTag: 65040e91-9111-42f0-97c5-8a827ca0b2a9
+
+	column DepartamentoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 749920a5-7e41-41e4-b6ce-ac81adae7b54
+		summarizeBy: none
+		sourceColumn: DepartamentoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartamentoBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d40a16fd-a7c5-4e0b-b130-da40608732fc
+		summarizeBy: sum
+		sourceColumn: DepartamentoBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: 168d4a52-5dd6-446d-b21b-346050c2e156
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: 0464e26c-9554-4ea7-b989-0897136086a6
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostoCentro
+		dataType: string
+		lineageTag: 2006faa2-b4ae-4bd0-8dcb-5a85cf7d2b00
+		summarizeBy: none
+		sourceColumn: CostoCentro
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDepartamento = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimDepartamento = Source{[Schema = "dm", Item = "DimDepartamento"]}[Data]
+				in
+				  DimDepartamento
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

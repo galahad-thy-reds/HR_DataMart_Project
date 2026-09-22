@@ -1,0 +1,154 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "f46de49faafda1256983",
+  "position": {
+    "x": 314.94356659142227,
+    "y": 177.69751693002263,
+    "z": 2000,
+    "height": 307.72009029345372,
+    "width": 647.22347629796843,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPuesto"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimPuesto.Nombre",
+              "nativeQueryRef": "Puesto",
+              "active": true,
+              "displayName": "Puesto"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHabilidad"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimHabilidad.Nombre",
+              "nativeQueryRef": "Habilidad",
+              "active": true,
+              "displayName": "Habilidad"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "21 - % gaps"
+                }
+              },
+              "queryRef": "_Medidas.21 - % gaps",
+              "nativeQueryRef": "% gaps",
+              "displayName": "% gaps"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "24 - Nivel actual promedio"
+                }
+              },
+              "queryRef": "_Medidas.24 - Nivel actual promedio",
+              "nativeQueryRef": "Nivel actual promedio",
+              "displayName": "Nivel actual promedio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "25 - Nivel requerido promedio"
+                }
+              },
+              "queryRef": "_Medidas.25 - Nivel requerido promedio",
+              "nativeQueryRef": "Nivel requerido promedio",
+              "displayName": "Nivel requerido promedio"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "DimPuesto.Nombre"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPuesto"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "DimHabilidad.Nombre"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'Administrador de Base Datos'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  }
+}

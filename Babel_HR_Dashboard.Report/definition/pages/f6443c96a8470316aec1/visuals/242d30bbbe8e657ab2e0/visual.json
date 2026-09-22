@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "242d30bbbe8e657ab2e0",
+  "position": {
+    "x": 960,
+    "y": 212.86343612334804,
+    "z": 2004,
+    "height": 351.01321585903082,
+    "width": 490.57268722466961,
+    "tabOrder": 2004
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimEmpleado"
+                    }
+                  },
+                  "Property": "GeneroDesc"
+                }
+              },
+              "queryRef": "DimEmpleado.GeneroDesc",
+              "nativeQueryRef": "Genero",
+              "active": true,
+              "displayName": "Genero"
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimDepartamento"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "DimDepartamento.Nombre",
+              "nativeQueryRef": "Departamento",
+              "active": true,
+              "displayName": "Departamento"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPuesto"
+                    }
+                  },
+                  "Property": "NivelJerarquicoDesc"
+                }
+              },
+              "queryRef": "DimPuesto.NivelJerarquicoDesc",
+              "nativeQueryRef": "Jerarquia",
+              "active": false,
+              "displayName": "Jerarquia"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "27 - Salario promedio"
+                }
+              },
+              "queryRef": "_Medidas.27 - Salario promedio",
+              "nativeQueryRef": "Salario promedio",
+              "displayName": "Salario promedio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

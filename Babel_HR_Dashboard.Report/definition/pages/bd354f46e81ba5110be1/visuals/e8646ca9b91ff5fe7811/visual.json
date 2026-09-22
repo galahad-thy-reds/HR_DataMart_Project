@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "e8646ca9b91ff5fe7811",
+  "position": {
+    "x": 570.65462753950374,
+    "y": 774.35665914221227,
+    "z": 7000,
+    "height": 300.49661399548535,
+    "width": 442.07674943566593,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimMotivoSalida"
+                    }
+                  },
+                  "Property": "EvitableDesc"
+                }
+              },
+              "queryRef": "DimMotivoSalida.EvitableDesc",
+              "nativeQueryRef": "Motivo",
+              "active": true,
+              "displayName": "Motivo"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "06 - Salidas"
+                }
+              },
+              "queryRef": "_Medidas.06 - Salidas",
+              "nativeQueryRef": "Salidas",
+              "displayName": "Salidas"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "06 - Salidas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

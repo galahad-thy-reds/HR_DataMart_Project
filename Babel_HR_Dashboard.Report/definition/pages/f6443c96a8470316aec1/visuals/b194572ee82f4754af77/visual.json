@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b194572ee82f4754af77",
+  "position": {
+    "x": 218.50220264317181,
+    "y": 314.36123348017622,
+    "z": 2002,
+    "height": 150.24830699774267,
+    "width": 297.607223476298,
+    "tabOrder": 2002
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "02 - Ultimo AnioMes"
+                }
+              },
+              "queryRef": "_Medidas.02 - Ultimo AnioMes",
+              "nativeQueryRef": "Ultimo Año/Mes",
+              "displayName": "Ultimo Año/Mes"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

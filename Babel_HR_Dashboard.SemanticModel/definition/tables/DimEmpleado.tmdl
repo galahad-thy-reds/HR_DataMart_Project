@@ -1,0 +1,155 @@
+table DimEmpleado
+	lineageTag: 4e516665-7306-4da9-b157-88ccf055809b
+
+	column EmpleadoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 43fcdbda-3b9f-4239-91ee-2fed3dd35835
+		summarizeBy: none
+		sourceColumn: EmpleadoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpleadoBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: df78f701-23b8-48ed-b08e-6c7b17fc2a10
+		summarizeBy: sum
+		sourceColumn: EmpleadoBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumeroEmpleado
+		dataType: string
+		lineageTag: 8016d94b-3910-456f-af9f-84b52b64012f
+		summarizeBy: none
+		sourceColumn: NumeroEmpleado
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreCompleto
+		dataType: string
+		lineageTag: cb204a1b-3fff-49fd-92fc-20d8cb972674
+		summarizeBy: none
+		sourceColumn: NombreCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: e243073c-e287-4f58-b546-206d8fcc8c50
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaNacimiento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7bd1d540-0727-48cd-a42c-8e90ad75f078
+		summarizeBy: none
+		sourceColumn: FechaNacimiento
+
+		variation Variation
+			isDefault
+			relationship: 7a5be38c-4458-42d3-9cbd-292ce3c907d4
+			defaultHierarchy: LocalDateTable_71a820b3-0f67-48e1-9275-9c5bb10612f9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FechaContratacion
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 514e1c06-6784-4787-b09f-8d6a9a36d8d7
+		summarizeBy: none
+		sourceColumn: FechaContratacion
+
+		variation Variation
+			isDefault
+			relationship: d3fa1568-1e31-4559-ab1d-eac29b581e89
+			defaultHierarchy: LocalDateTable_c5b5508d-f99a-417f-893e-c2cb8e39f9e1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TipoContrato
+		dataType: string
+		lineageTag: 2ae6d749-13eb-4ffa-aba6-07e6167709a3
+		summarizeBy: none
+		sourceColumn: TipoContrato
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaInicioValidez
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ac3d3069-87cf-4633-ae8c-3b0ac01a6f60
+		summarizeBy: none
+		sourceColumn: FechaInicioValidez
+
+		variation Variation
+			isDefault
+			relationship: 395ba888-ee53-4396-b7cf-bb57fc07c46d
+			defaultHierarchy: LocalDateTable_00f3b132-c05c-428f-b0b0-eec6ffc6d390.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaFinValidez
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 08db2c50-503b-4b8a-9d5e-6c28f7f7ff59
+		summarizeBy: none
+		sourceColumn: FechaFinValidez
+
+		variation Variation
+			isDefault
+			relationship: b83ac09b-a569-46b1-987b-b536755a9c2f
+			defaultHierarchy: LocalDateTable_f020148c-9904-4aa9-a6d0-8a0af088d362.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsActual
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2b05de8f-3c24-4b04-adc4-b1e78a8f1bab
+		summarizeBy: none
+		sourceColumn: EsActual
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeneroDesc =
+			
+			SWITCH(
+			    DimEmpleado[Genero],
+			    "F", "Femenino",
+			    "M", "Masculino",
+			    "Otro"
+			)
+		lineageTag: 50f93513-5502-4ecc-86a7-7729f3f191e5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEmpleado = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimEmpleado = Source{[Schema = "dm", Item = "DimEmpleado"]}[Data]
+				in
+				  DimEmpleado
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

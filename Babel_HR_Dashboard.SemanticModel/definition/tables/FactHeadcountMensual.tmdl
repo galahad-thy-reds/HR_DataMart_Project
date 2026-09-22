@@ -1,0 +1,274 @@
+table FactHeadcountMensual
+	lineageTag: 3223b199-7fea-4deb-85c4-13e686eb1d86
+
+	column FactHeadcountID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 42bb0e69-6844-47ad-a351-fb7287ee1b3f
+		summarizeBy: count
+		sourceColumn: FactHeadcountID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a549a6e0-fb15-4c7e-832d-d7ceca9881be
+		summarizeBy: none
+		sourceColumn: FechaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpleadoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 115243a7-9244-43fe-815b-73a324ca7458
+		summarizeBy: none
+		sourceColumn: EmpleadoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartamentoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 56ae590b-6ed8-43f2-892b-c88f50e03300
+		summarizeBy: none
+		sourceColumn: DepartamentoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PuestoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ee639b46-3b1c-46c9-97bf-12996e46e193
+		summarizeBy: none
+		sourceColumn: PuestoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b0ff03c3-71b2-4492-a3a7-b50420fcbb5c
+		summarizeBy: none
+		sourceColumn: UbicacionKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EscalaSalarialKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a47c8e29-0292-49db-a311-acf131a2bfc7
+		summarizeBy: none
+		sourceColumn: EscalaSalarialKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salario
+		dataType: double
+		lineageTag: dfc7bfb8-e215-491e-85b3-4808692e160a
+		summarizeBy: sum
+		sourceColumn: Salario
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EsActivo
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 14ccb18e-9ad9-4570-b721-01386e225415
+		summarizeBy: none
+		sourceColumn: EsActivo
+
+		annotation SummarizationSetBy = Automatic
+
+	column AntiguedadMeses
+		dataType: int64
+		formatString: 0
+		lineageTag: 72dd05bc-e0cd-4bf0-acdb-f628a6dc9e2b
+		summarizeBy: sum
+		sourceColumn: AntiguedadMeses
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangoAntiguedad =
+			
+			VAR Meses = FactHeadcountMensual[AntiguedadMeses]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        Meses < 6, "0-6 meses",
+			        Meses < 12, "6-12 meses",
+			        Meses < 24, "1-2 años",
+			        Meses < 48, "2-4 años",
+			        "4+ años"
+			    )
+		lineageTag: 8ac45729-3821-4a55-984e-b09473cc8df6
+		summarizeBy: none
+		sortByColumn: RangoAntiguedadOrden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangoAntiguedadOrden =
+			
+			VAR Meses = FactHeadcountMensual[AntiguedadMeses]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        Meses < 6, 1,
+			        Meses < 12, 2,
+			        Meses < 24, 3,
+			        Meses < 48, 4,
+			        5
+			    )
+		isHidden
+		formatString: 0
+		lineageTag: 770652ce-9f24-4ee1-898c-c7434fd1bf89
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PosicionEnBandaPct =
+			
+			DIVIDE (
+			    FactHeadcountMensual[Salario] - RELATED ( DimEscalaSalarial[SalarioMinimo] ),
+			    RELATED ( DimEscalaSalarial[SalarioMaximo] ) - RELATED ( DimEscalaSalarial[SalarioMinimo] )
+			)
+		lineageTag: 385e1e6d-50c3-4c55-a507-c8bfc0e2e1e1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EstadoBanda = ```
+			
+			VAR Salario = FactHeadcountMensual[Salario]
+			VAR Minimo = RELATED ( DimEscalaSalarial[SalarioMinimo] )
+			VAR Maximo = RELATED ( DimEscalaSalarial[SalarioMaximo] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        Salario < Minimo, "Bajo banda",
+			        Salario > Maximo, "Sobre banda",
+			        "Dentro de banda"
+			    )
+			
+			```
+		lineageTag: b75d61a9-25b3-49a4-b66b-958c81a3c966
+		summarizeBy: none
+		sortByColumn: EstadoBandaOrden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoBandaOrden =
+			
+			VAR Salario = FactHeadcountMensual[Salario]
+			VAR Minimo = RELATED ( DimEscalaSalarial[SalarioMinimo] )
+			VAR Maximo = RELATED ( DimEscalaSalarial[SalarioMaximo] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        Salario < Minimo, 1,
+			        Salario > Maximo, 3,
+			        2
+			    )
+		isHidden
+		formatString: 0
+		lineageTag: 7771042d-d0bf-4ccd-a362-b5170c973ef8
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PosicionEnBandaBucket =
+			
+			VAR Pct = FactHeadcountMensual[PosicionEnBandaPct]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( Pct ), "Sin banda",
+			        Pct < 0, "< 0% (bajo banda)",
+			        Pct < 0.20, "0-20%",
+			        Pct < 0.40, "20-40%",
+			        Pct < 0.60, "40-60%",
+			        Pct < 0.80, "60-80%",
+			        Pct <= 1, "80-100%",
+			        "> 100% (sobre banda)"
+			    )
+		lineageTag: 1228d693-d13a-4191-87ee-e57d3de00f21
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column PosicionEnBandaBucketOrden =
+			
+			VAR Pct = FactHeadcountMensual[PosicionEnBandaPct]
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        ISBLANK ( Pct ), 0,
+			        Pct < 0, 1,
+			        Pct < 0.20, 2,
+			        Pct < 0.40, 3,
+			        Pct < 0.60, 4,
+			        Pct < 0.80, 5,
+			        Pct <= 1, 6,
+			        7
+			    )
+		formatString: 0
+		lineageTag: 90c210b0-325c-4d72-aaeb-e412e11507ae
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsActivoN = INT ( FactHeadcountMensual[EsActivo] )
+		formatString: 0
+		lineageTag: 8c3b26cc-0f9e-48c3-a441-1ad8aaaa7652
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactHeadcountMensual = m
+		mode: import
+		queryGroup: Hechos
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  FactHeadcountMensual = Source{[Schema = "dm", Item = "FactHeadcountMensual"]}[Data]
+				in
+				  FactHeadcountMensual
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

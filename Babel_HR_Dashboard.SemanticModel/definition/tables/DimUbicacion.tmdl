@@ -1,0 +1,73 @@
+table DimUbicacion
+	lineageTag: 9f2ed8c5-5c37-4484-97bf-23542b385054
+
+	column UbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5cffb9bb-81db-4b0f-9599-b904ec571252
+		summarizeBy: none
+		sourceColumn: UbicacionKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UbicacionBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eeb3ce1b-8a61-4de8-8b4f-1cc9b27b7a42
+		summarizeBy: sum
+		sourceColumn: UbicacionBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: 1b4dfb1e-a582-49c2-88a6-20c71c527489
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: 8e9c8f58-9657-421d-9829-8f702bfeb0f4
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provincia
+		dataType: string
+		lineageTag: b4ffef88-2e99-4a4f-b3ed-ecd0976dc217
+		summarizeBy: none
+		sourceColumn: Provincia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: 1e2489bb-d569-4d00-a9ca-b4840336b7c5
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimUbicacion = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimUbicacion = Source{[Schema = "dm", Item = "DimUbicacion"]}[Data]
+				in
+				  DimUbicacion
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

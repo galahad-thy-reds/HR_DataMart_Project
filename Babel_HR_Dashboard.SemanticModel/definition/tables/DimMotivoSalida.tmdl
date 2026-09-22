@@ -1,0 +1,83 @@
+table DimMotivoSalida
+	lineageTag: 4eefd808-7492-4abb-b8cf-3801c5205ce8
+
+	column MotivoSalidaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2d0501b8-273f-474a-b8ad-45d697667fa3
+		summarizeBy: none
+		sourceColumn: MotivoSalidaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MotivoSalidaBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9d435efd-dfd2-44b3-be65-370de2d72f9f
+		summarizeBy: none
+		sourceColumn: MotivoSalidaBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: 24257bcb-7c76-452d-b9b8-b070e1583fb6
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: e461abcc-cd5c-47a3-b859-9d96b12fd6f3
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: f2a7b985-c989-4c57-9055-39c9ce61a5a0
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsEvitable
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cd33a645-74db-4195-8b2e-aa6ed4f34d6b
+		summarizeBy: none
+		sourceColumn: EsEvitable
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EvitableDesc =
+			
+			IF ( DimMotivoSalida[EsEvitable], "Evitable", "No evitable" )
+		lineageTag: d1c4c9b3-8618-44d6-823a-e9ff6b2cf58d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimMotivoSalida = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimMotivoSalida = Source{[Schema = "dm", Item = "DimMotivoSalida"]}[Data]
+				in
+				  DimMotivoSalida
+
+	annotation PBI_ResultType = Table
+

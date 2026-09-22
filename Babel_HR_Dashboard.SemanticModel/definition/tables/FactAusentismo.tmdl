@@ -1,0 +1,126 @@
+table FactAusentismo
+	lineageTag: 3a7c9050-6fdc-44b7-a024-4a2161b5901f
+
+	column FactAusentismoID
+		dataType: int64
+		formatString: 0
+		lineageTag: a1315314-3e45-4cca-b387-743dc01c19d3
+		summarizeBy: count
+		sourceColumn: FactAusentismoID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaInicioKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: dccfa9bd-3968-4917-bbc3-2077f44abc63
+		summarizeBy: count
+		sourceColumn: FechaInicioKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaFinKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d407eb20-8f45-4bea-bdb7-556e73f47843
+		summarizeBy: none
+		sourceColumn: FechaFinKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpleadoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa1a9a85-1726-4df9-b68d-60741752a958
+		summarizeBy: none
+		sourceColumn: EmpleadoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DepartamentoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 65abe541-5f7c-4fd3-b016-8e1410d6d563
+		summarizeBy: none
+		sourceColumn: DepartamentoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PuestoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f7b9f0d1-d44e-433b-a759-7cc7a564db9b
+		summarizeBy: none
+		sourceColumn: PuestoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TipoAusenciaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c4034747-72ff-4aa4-a6dc-eb5d74d0f159
+		summarizeBy: none
+		sourceColumn: TipoAusenciaKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasLaborales
+		dataType: double
+		lineageTag: 0de4d2d3-b811-470c-976d-791040569084
+		summarizeBy: sum
+		sourceColumn: DiasLaborales
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ContadorEvento
+		dataType: int64
+		formatString: 0
+		lineageTag: 854b6dab-b9a6-4004-b3b8-558d681ba178
+		summarizeBy: sum
+		sourceColumn: ContadorEvento
+
+		annotation SummarizationSetBy = Automatic
+
+	column AfectaProductividad
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: abf4fd33-95c3-4b22-ae34-8698910c7083
+		summarizeBy: none
+		sourceColumn: AfectaProductividad
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactAusentismo = m
+		mode: import
+		queryGroup: Hechos
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  Fact_Ausentismo = Source{[Schema = "dm", Item = "FactAusentismo"]}[Data]
+				in
+				  Fact_Ausentismo
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

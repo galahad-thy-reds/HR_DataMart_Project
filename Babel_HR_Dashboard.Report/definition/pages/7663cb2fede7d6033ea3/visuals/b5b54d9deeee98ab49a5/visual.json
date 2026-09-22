@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "b5b54d9deeee98ab49a5",
+  "position": {
+    "x": 566.32054176072245,
+    "y": 0,
+    "z": 5000,
+    "height": 150,
+    "width": 281,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "15 - Tasa ausentismo %"
+                }
+              },
+              "queryRef": "_Medidas.15 - Tasa ausentismo %",
+              "nativeQueryRef": "Tasa ausentismo %",
+              "displayName": "Tasa ausentismo %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Medidas"
+                  }
+                },
+                "Property": "15 - Tasa ausentismo %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "94cc7f94632d077df18c"
+}

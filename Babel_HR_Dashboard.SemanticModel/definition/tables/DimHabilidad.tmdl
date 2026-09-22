@@ -1,0 +1,80 @@
+table DimHabilidad
+	lineageTag: 4f4e4ec9-1882-4bee-925e-4e007be9239a
+
+	column HabilidadKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bb5cd81f-7cc0-4aee-a88c-8e71f592e860
+		summarizeBy: none
+		sourceColumn: HabilidadKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column HabilidadBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f5969688-5f5f-44b9-a302-32af05f9e2ce
+		summarizeBy: none
+		sourceColumn: HabilidadBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: d4c155b0-75b9-4331-8a58-0dd380ec8678
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: fb5cf869-45d4-4666-9347-24654f1b56ed
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: 0e2c99f8-6de1-4e3f-b67c-888e72e8864f
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCritical
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 7ce4353e-75c6-4836-84b4-5e0fd55f7c6e
+		summarizeBy: none
+		sourceColumn: IsCritical
+
+		annotation SummarizationSetBy = Automatic
+
+	column CriticaDesc =
+			
+			IF ( DimHabilidad[IsCritical], "Crítica", "No crítica" )
+		lineageTag: 4344ad29-74fe-4a30-ba00-db605ec2e7b3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimHabilidad = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimHabilidad = Source{[Schema = "dm", Item = "DimHabilidad"]}[Data]
+				in
+				  DimHabilidad
+
+	annotation PBI_ResultType = Table
+

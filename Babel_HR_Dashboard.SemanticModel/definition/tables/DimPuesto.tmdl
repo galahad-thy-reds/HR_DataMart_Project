@@ -1,0 +1,91 @@
+table DimPuesto
+	lineageTag: e852acca-04e2-4c7b-af88-4336cb015d78
+
+	column PuestoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fdcca03b-c665-4ac1-962d-e2156a3da092
+		summarizeBy: none
+		sourceColumn: PuestoKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PuestoBK
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 39039c86-5b11-406e-b566-5be165da8b82
+		summarizeBy: sum
+		sourceColumn: PuestoBK
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo
+		dataType: string
+		lineageTag: ed8867c0-ee34-4e9a-8795-a540762fc2c9
+		summarizeBy: none
+		sourceColumn: Codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: d9ff622b-e54b-4ee6-b0c9-a23bfb88d0b7
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelJerarquico
+		dataType: int64
+		formatString: 0
+		lineageTag: eaff6d94-db67-4cff-a021-daccd6112382
+		summarizeBy: sum
+		sourceColumn: NivelJerarquico
+
+		annotation SummarizationSetBy = Automatic
+
+	column FamiliaPuesto
+		dataType: string
+		lineageTag: d7663b00-84ba-415f-9323-9d785055440c
+		summarizeBy: none
+		sourceColumn: FamiliaPuesto
+
+		annotation SummarizationSetBy = Automatic
+
+	column NivelJerarquicoDesc =
+			
+			SWITCH (
+			    DimPuesto[NivelJerarquico],
+			    1, "1 · Operativo",
+			    2, "2 · Analista / especialista",
+			    3, "3 · Senior / supervisor",
+			    4, "4 · Jefatura",
+			    5, "5 · Dirección",
+			    "Sin nivel"
+			)
+		lineageTag: 440ca1c9-a0af-426c-ae9e-2a3e5187d5cc
+		summarizeBy: none
+		sortByColumn: NivelJerarquico
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPuesto = m
+		mode: import
+		queryGroup: Dimensiones
+		source =
+				let
+				  Source = HR_DataMart_Src,
+				  DimPuesto = Source{[Schema = "dm", Item = "DimPuesto"]}[Data]
+				in
+				  DimPuesto
+
+	annotation PBI_ResultType = Table
+
